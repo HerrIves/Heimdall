@@ -1,0 +1,368 @@
+# Heimdall — Development Plan
+
+> High-level roadmap from brainstorm to a working personal assistant. This document describes the order of design and implementation. Detailed technical decisions belong in dedicated documents.
+
+## Current status
+
+- [x] Initial product brainstorm
+- [x] Core product principles
+- [x] Domain-agent concept
+- [x] Reusable-module concept
+- [x] Proactive / 24×7 direction
+- [x] LLM-provider independence
+- [x] Security and guardrails as a first-class requirement
+- [x] Resource-efficiency principle
+- [ ] Define and build the first reference agent
+
+---
+
+## Phase 1 — Close Brainstorm v1
+
+Treat `brainstorm.md` as the source of product ideas and principles.
+
+Before freezing Brainstorm v1, make sure it captures:
+
+- multi-channel interaction;
+- mobile application as a full client;
+- Telegram as an optional interaction channel;
+- one backend / one Heimdall behind all channels;
+- proactive behavior and triggers;
+- human-in-the-loop and authorization boundaries;
+- security / guardrails;
+- resource efficiency.
+
+After this point, new implementation details should primarily go into dedicated design documents rather than expanding the brainstorm indefinitely.
+
+**Result:** `brainstorm.md` — Brainstorm v1 complete.
+
+---
+
+## Phase 2 — Define the Car Agent
+
+Use the Car Agent as the first reference domain agent.
+
+Create `CAR_AGENT.md` and describe what the agent should do in real life before deciding how it is implemented.
+
+Define:
+
+- responsibilities and boundaries;
+- vehicle profile;
+- maintenance and service history;
+- faults and repairs;
+- documents;
+- expenses and vehicle budget;
+- parts and purchases;
+- tasks, deadlines and recurring maintenance;
+- proactive monitoring;
+- interaction with the user;
+- authorization boundaries.
+
+Describe concrete end-to-end user stories, for example:
+
+- photograph a repair invoice;
+- report a new fault by voice;
+- “I need to replace the brake pads”;
+- upcoming TÜV / inspection;
+- tire change;
+- search for a compatible part;
+- record fuel/charging or repair expense;
+- remind and follow up until maintenance is completed.
+
+**Result:** a clear behavioral specification for the first agent.
+
+---
+
+## Phase 3 — Select the first vertical slice
+
+Do not attempt to implement the entire Car Agent at once.
+
+Choose one narrow scenario that exercises the architecture end-to-end.
+
+Current leading candidate:
+
+> User sends a photo of a vehicle repair invoice → Heimdall extracts the data → identifies the vehicle → records maintenance and expense → creates any relevant future task → reports the result and asks only for missing information.
+
+Define:
+
+- input;
+- expected structured data;
+- decisions the agent makes;
+- modules involved;
+- persistent state changes;
+- events produced;
+- user confirmations;
+- output;
+- failure/ambiguity paths.
+
+**Result:** first implementable Heimdall workflow.
+
+---
+
+## Phase 4 — Derive reusable modules and contracts
+
+Use the Car Agent scenarios to determine which capabilities belong in shared infrastructure.
+
+Likely modules:
+
+- Tasks;
+- Scheduler;
+- Notifications;
+- Documents;
+- OCR / image understanding;
+- Budget / expenses;
+- Search / research;
+- Shopping;
+- Payments;
+- persistent storage / memory;
+- integrations.
+
+For every module define:
+
+- responsibility;
+- inputs/outputs;
+- permissions;
+- events;
+- persistence requirements;
+- failure behavior;
+- security boundaries.
+
+Avoid creating abstractions without a concrete use case.
+
+**Result:** stable contracts between agents and reusable capabilities.
+
+---
+
+## Phase 5 — Define the core architecture
+
+Create `ARCHITECTURE.md`.
+
+Specify:
+
+- interface/channel layer;
+- orchestrator;
+- agent runtime;
+- domain agents;
+- module/tool layer;
+- event/workflow system;
+- scheduler;
+- persistence;
+- file/document storage;
+- LLM abstraction;
+- integrations;
+- notification delivery;
+- authorization/policy layer;
+- audit trail and observability.
+
+Resolve cross-domain ownership, especially questions such as how a Car Agent expense contributes to the future global Finance domain without duplicated state.
+
+**Result:** Heimdall architecture v1.
+
+---
+
+## Phase 6 — Threat model and guardrails
+
+Create a dedicated security design before enabling consequential actions.
+
+Cover at minimum:
+
+- direct and indirect prompt injection;
+- malicious web/document/email/image content;
+- phishing/social engineering;
+- untrusted tool output;
+- data exfiltration;
+- permission escalation;
+- poisoned memory;
+- secrets management;
+- user/session identity;
+- action authorization;
+- purchases and payments;
+- auditability.
+
+Define deterministic policy enforcement outside the LLM.
+
+Classify operations by risk and specify which can run automatically and which require confirmation.
+
+**Result:** security model and permission system.
+
+---
+
+## Phase 7 — Resource and cost model
+
+Translate the resource-efficiency principle into technical rules.
+
+Decide:
+
+- when no LLM is needed;
+- model tiers for different tasks;
+- context limits and retrieval strategy;
+- caching;
+- event-driven vs continuously running processes;
+- API-call minimization;
+- background-job strategy;
+- storage lifecycle;
+- cost telemetry and limits.
+
+**Result:** predictable infrastructure and LLM operating costs.
+
+---
+
+## Phase 8 — Choose the technology stack
+
+Only after the behavioral and architectural requirements are known, evaluate concrete technologies.
+
+Decide:
+
+- backend language/framework;
+- agent/runtime framework vs custom implementation;
+- database(s);
+- event/workflow technology;
+- scheduler;
+- object/file storage;
+- LLM gateway/provider abstraction;
+- mobile client technology;
+- Telegram integration;
+- deployment/container platform;
+- monitoring/logging;
+- CI/CD.
+
+Evaluate candidates against Heimdall's actual requirements rather than choosing a framework first.
+
+**Result:** documented stack decisions and rationale.
+
+---
+
+## Phase 9 — Repository and engineering foundation
+
+Create the initial project structure.
+
+Set up:
+
+- monorepo/repository layout;
+- shared contracts;
+- configuration;
+- local development environment;
+- containers;
+- database migrations;
+- secrets handling;
+- testing strategy;
+- CI;
+- logging/observability baseline;
+- security checks.
+
+**Result:** runnable Heimdall skeleton.
+
+---
+
+## Phase 10 — Implement the first vertical slice
+
+Implement the selected Car Agent workflow end-to-end.
+
+The goal is not a demo with mocked architecture, but a small real system that validates:
+
+- channel → orchestrator → agent routing;
+- LLM abstraction;
+- module calls;
+- persistence;
+- events/tasks;
+- permissions;
+- notifications;
+- audit trail;
+- failure handling.
+
+**Result:** first working Heimdall workflow.
+
+---
+
+## Phase 11 — Expand the Car Agent
+
+Iteratively add the remaining validated Car Agent scenarios.
+
+Possible order:
+
+1. vehicle profile;
+2. maintenance history;
+3. tasks and reminders;
+4. document ingestion;
+5. expenses/budget;
+6. proactive maintenance;
+7. parts research;
+8. shopping;
+9. approved external actions.
+
+Continuously refine shared modules instead of duplicating capabilities inside the agent.
+
+**Result:** useful Car Agent MVP.
+
+---
+
+## Phase 12 — Build user interfaces
+
+Develop clients against the same Heimdall backend.
+
+### Mobile app
+
+Full interaction and management interface:
+
+- text;
+- voice;
+- camera;
+- files;
+- tasks;
+- agents;
+- notifications;
+- structured domain views;
+- settings and permissions.
+
+### Telegram
+
+Optional lightweight channel for:
+
+- messages;
+- voice;
+- photos/documents;
+- quick commands;
+- proactive notifications;
+- approvals where appropriate and secure.
+
+Channels contain presentation/integration logic, not domain business logic.
+
+**Result:** Heimdall can be used naturally from more than one interface.
+
+---
+
+## Phase 13 — Validate the Agent Template
+
+Once the Car Agent is useful, extract the proven common structure into the reusable agent template/runtime.
+
+Then create a second domain agent — likely Finance, Home, Project, or another high-value domain — to test whether the abstraction actually generalizes.
+
+Do not declare the agent architecture reusable until a second agent successfully uses it.
+
+**Result:** validated Agent Factory / domain-agent architecture.
+
+---
+
+## Phase 14 — Expand Heimdall
+
+Add further agents and integrations incrementally.
+
+For every new agent/module:
+
+1. define real user scenarios;
+2. define ownership and boundaries;
+3. reuse existing modules where possible;
+4. perform threat-model/security review;
+5. define permissions;
+6. estimate resource/cost impact;
+7. test deterministic behavior;
+8. add proactive behavior only where useful.
+
+**Result:** a growing but controlled personal-assistant platform.
+
+---
+
+## Immediate next step
+
+Create `CAR_AGENT.md` and brainstorm the Car Agent's real-world responsibilities and end-to-end scenarios.
+
+Do **not** choose the agent framework or implementation stack yet. The first Car Agent scenarios should drive those decisions.
