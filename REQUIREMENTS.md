@@ -19,7 +19,7 @@
 
 **REQ-V03 · Agreed.** Incoming observations must be classified, preserved, and either intentionally retained as reference material or turned into manageable work with a desired outcome; actionable items must be followed through, not silently abandoned.
 
-**REQ-V04 · Agreed.** Heimdall is the name of the central orchestrator/guardian. Key subsystem and agent names should be chosen from Norse mythology when there is a meaningful correspondence; **no mythological name for the first vehicle agent has been decided**.
+**REQ-V04 · Agreed.** Heimdall is the name of the central orchestrator/guardian. Key subsystem and agent names should be chosen from Norse mythology when there is a meaningful correspondence; **the first vehicle agent is named Hrimfaxi (Hrímfaxi)**.
 
 ## 2. Entry points and interaction
 
@@ -75,7 +75,7 @@
 
 ## 6. The first reference domain: Vehicle
 
-**REQ-C01 · Agreed.** The first end-to-end reference is a vehicle ownership and maintenance agent; working label **Vehicle/Car Agent** until its Norse-inspired product name is chosen.
+**REQ-C01 · Agreed.** The first end-to-end reference is a vehicle ownership and maintenance agent named **Hrimfaxi (Hrímfaxi)**. Its working specification is [CAR_AGENT.md](./CAR_AGENT.md), with ten candidate scenarios in [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md).
 
 **REQ-C02 · Candidate scope.** Vehicle records (make/model/version, VIN, mileage, registration, tires, technical characteristics), maintenance/repair history, service/TÜV/inspection deadlines, faults, compatible parts, price research, receipts/invoices/reports, costs/insurance/tax/fuel/charging, recurring checks, and tasks.
 
@@ -87,7 +87,7 @@
 
 **REQ-C06 · Candidate scenario — due maintenance.** Remind about TÜV/service/tire change at an appropriate time; propose preparation steps; track until complete.
 
-**REQ-C07 · Open.** The **first MVP vertical slice** must be selected and documented with inputs, outputs, failure states, authorization, and acceptance checks before writing core implementation.
+**REQ-C07 · Open.** The **first MVP vertical slice** must be selected and documented with inputs, outputs, failure states, authorization, and acceptance checks before writing core implementation. Both fault-report tracking (UC-01, described as MVP slice in the cases catalog) and invoice ingestion (UC-03, described as leading slice in the agent spec/plan) remain candidates until a decision is recorded.
 
 ## 7. Autonomy and authorization
 
@@ -144,7 +144,7 @@ The table below maps **all 18 sections of the existing brainstorm**, including i
 
 ## 11. Outstanding product decisions (not silently closed)
 
-1. Name of the first vehicle domain agent.
+1. ~~Name of the first vehicle domain agent~~ — resolved: **Hrimfaxi**.
 2. App delivery technology and the exact Telegram/app feature split.
 3. MVP scenario selection and acceptance criteria.
 4. Agent/module data ownership and cross-domain synchronization.
@@ -154,4 +154,4 @@ The table below maps **all 18 sections of the existing brainstorm**, including i
 8. Cost, performance and reliability targets.
 9. Which possible future domain agents actually belong to the initial product.
 
-**Next step:** write the first vehicle agent's behavioral specification from these requirements, then select a narrow end-to-end MVP scenario. Do not mistake this document for an implementation checklist or architecture decision record.
+**Next step:** review the initial [CAR_AGENT.md](./CAR_AGENT.md) against these requirements, resolve contradictions with [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), and select a narrow end-to-end MVP scenario. Do not mistake this document for an implementation checklist or architecture decision record.
