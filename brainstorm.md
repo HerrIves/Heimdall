@@ -319,3 +319,21 @@ Core principles:
 - Design every new module and agent with a security/threat-model review, not as a later hardening step.
 
 Security and guardrails should therefore be reviewed continuously throughout Heimdall's design and implementation, not postponed until the end.
+
+
+## 16. Resource efficiency by design
+
+Heimdall should minimize the resources required to accomplish a task without unnecessarily reducing quality or reliability.
+
+As a guiding principle, the system should avoid unnecessary use of:
+
+- LLM calls and oversized model context;
+- expensive/high-capability models when a simpler model is sufficient;
+- compute, memory, storage, and network resources;
+- external API calls;
+- continuously running background processes when event-driven or scheduled execution is sufficient;
+- repeated work when safe caching or reuse is possible.
+
+The general rule is: **use the simplest and least resource-intensive mechanism that can reliably perform the task.**
+
+Concrete implementation rules and optimization mechanisms will be defined later as part of the architecture.
