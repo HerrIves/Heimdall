@@ -48,11 +48,11 @@ After this point, new implementation details should primarily go into dedicated 
 
 ---
 
-## Phase 2 — Define the Vehicle Domain Agent (working label; final Norse name open)
+## Phase 2 — Define the Hrimfaxi Vehicle Domain Agent (draft produced)
 
 Use the Car Agent as the first reference domain agent.
 
-Create the first agent's behavioral specification (working filename `CAR_AGENT.md`, subject to its Norse-inspired name) using `REQUIREMENTS.md`. Describe what it should do in real life before deciding how it is implemented. Capture acceptance criteria and how notes become managed outcomes.
+Create the first agent's behavioral specification (`CAR_AGENT.md`, for **Hrimfaxi**) using `REQUIREMENTS.md`. Describe what it should do in real life before deciding how it is implemented. Capture acceptance criteria and how notes become managed outcomes.
 
 Define:
 
@@ -85,13 +85,15 @@ Describe concrete end-to-end user stories, for example:
 
 ---
 
-## Phase 3 — Select the first vertical slice
+## Phase 3 — Select the first vertical slice (current)
 
 Do not attempt to implement the entire Car Agent at once.
 
 Choose one narrow scenario that exercises the architecture end-to-end.
 
-Current leading candidate:
+Candidates documented in [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md): **UC-01 (fault report → tracked incident)** and **UC-03 (invoice photo → structured service history)**. The catalog provisionally labels UC-01 as a first slice; [CAR_AGENT.md](./CAR_AGENT.md) describes invoice ingestion as the leading slice. **Decision pending** — neither has been formally accepted.
+
+Invoice candidate:
 
 > User sends a photo of a vehicle repair invoice → Heimdall extracts the data → identifies the vehicle → records maintenance and expense → creates any relevant future task → reports the result and asks only for missing information.
 
@@ -380,6 +382,6 @@ For every new agent/module:
 
 ## Immediate next step
 
-Use `REQUIREMENTS.md` to specify the first vehicle agent's real-world responsibilities and end-to-end scenarios, choose its Norse-inspired name, and select the first vertical slice. Keep all requirements and principles traceable.
+Review [CAR_AGENT.md](./CAR_AGENT.md) and [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md) for consistency and safety. The name **Hrimfaxi** and draft specification are recorded; next decide between UC-01 and UC-03 as the initial MVP slice, then define explicit acceptance tests. Keep all requirements and principles traceable.
 
 Do **not** choose the agent framework or implementation stack yet. The first Car Agent scenarios should drive those decisions.
