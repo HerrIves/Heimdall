@@ -140,7 +140,7 @@ The table below maps **all 18 sections of the existing brainstorm**, including i
 | 15. Security and guardrails | REQ-S01–S04; Principles 12–17, 22; Plan phase 6 + all reviews | Agreed mandatory |
 | 16. Resource efficiency | REQ-N02–N04; Principle 18; Plan phase 7 + all reviews | Agreed mandatory |
 | 17. Notes → projects/SMART | REQ-L01–L06; Principles 8–9; Plan phases 2–3 | Agreed principle; behavior to detail |
-| 18. Norse naming | REQ-V04, D03; Principle 24 | Agreed convention; first name open |
+| 18. Norse naming | REQ-V04, D03; Principle 24 | Agreed convention; first agent Hrimfaxi named |
 
 ## 11. Outstanding product decisions (not silently closed)
 
