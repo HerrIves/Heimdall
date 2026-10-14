@@ -377,3 +377,23 @@ SMART is a tool for clarification, not a rigid requirement to invent arbitrary d
 Not every note must become a project. Pure reference information, ideas without current action intent, records, or journal-like notes may remain informational — but that should be an intentional classification rather than an accidental dead end.
 
 This principle is cross-domain and should apply to Car, Home, Finance, Projects, and future agents.
+
+
+## 18. Norse mythology naming convention
+
+**Heimdall** is the name of the central orchestrator / guardian of the system, not necessarily the name of every individual component.
+
+Agents, major modules, services, and other meaningful subsystems may use names from Norse mythology when the mythological role maps naturally to the technical responsibility.
+
+The naming convention should help communicate architecture and personality rather than become decoration. A mythological name should therefore have a clear reason behind it.
+
+Guidelines:
+
+- Heimdall = orchestrator / watcher / guardian coordinating the system;
+- prefer Norse names for major concepts where there is a meaningful semantic match;
+- keep ordinary descriptive technical names where clarity is more important;
+- do not force a mythology name onto every class, API, table, or utility;
+- document the meaning of each chosen mythological name and why it fits the component;
+- when designing new agents/modules, actively consider and propose suitable Norse names.
+
+Potential names should be selected later together with the actual responsibilities of each component, rather than assigning names before the architecture is understood.
