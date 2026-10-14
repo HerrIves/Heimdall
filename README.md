@@ -18,8 +18,9 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 4. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
 5. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
 6. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
-7. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
-8. **README.md** — this document: repository introduction and documentation map.
+7. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
+8. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
+9. **README.md** — this document: repository introduction and documentation map.
 
 The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
 
@@ -40,6 +41,7 @@ The authoritative checklist lives in **[PRINCIPLES.md](./PRINCIPLES.md)**. Key c
 - LLM output is never an authorization boundary.
 - Prompt injection, indirect injection, phishing, permission abuse, data leakage, and excessive privileges must be considered for every relevant feature.
 - Financial, dangerous, sensitive, or irreversible actions require deterministic checks and appropriate user approval.
+- **Build vs Reuse:** evaluate shared modules and vetted libraries/providers before writing new generic infrastructure; review security, licensing, maintainability, cost and exit strategy.
 - Resources are minimized by design: do not use an LLM, expensive model, background process, or continuous polling when a simpler deterministic or event-driven mechanism is sufficient.
 
 ## First domain agent: Hrimfaxi (vehicle)
@@ -67,5 +69,6 @@ To avoid documents overlapping:
 - exploratory ideas and historical reasoning → **brainstorm.md**
 - repository orientation and documentation links → **README.md**
 - first agent specification and proposed scenarios → **CAR_AGENT.md**, **HRIMFAXI_USER_CASES.md**
+- Hrimfaxi scenario audit and blockers → **HRIMFAXI_CASE_REVIEW.md**
 
 README should point to the source of truth instead of duplicating its details.
