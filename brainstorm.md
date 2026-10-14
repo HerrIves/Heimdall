@@ -337,3 +337,43 @@ As a guiding principle, the system should avoid unnecessary use of:
 The general rule is: **use the simplest and least resource-intensive mechanism that can reliably perform the task.**
 
 Concrete implementation rules and optimization mechanisms will be defined later as part of the architecture.
+
+
+## 17. Notes must become actionable or intentionally archived
+
+Incoming information should not silently disappear into an unstructured notes pile.
+
+When the user records an observation, problem, idea, or intention, Heimdall should determine what kind of managed object it represents and move it into an appropriate lifecycle.
+
+For actionable observations, the default direction is to turn them into a **project / outcome-oriented work item** with a clearly defined desired result rather than leaving them as passive notes.
+
+Example:
+
+> “The wheel is squeaking.”
+
+The Car Agent should not merely save this sentence. It should:
+
+1. understand that this may represent a vehicle problem requiring resolution;
+2. identify the affected vehicle and relevant context;
+3. determine what information is missing;
+4. ask focused follow-up questions only where necessary;
+5. formulate the desired outcome and success criteria;
+6. create a managed project/work item;
+7. derive tasks, deadlines, research, diagnostics, appointments, purchases, reminders, or other actions as needed;
+8. track the work until the outcome is reached or the project is explicitly cancelled/closed.
+
+### SMART-style outcome definition
+
+Where appropriate, Heimdall should help turn vague intentions and observations into sufficiently concrete outcomes using SMART-style criteria:
+
+- **Specific** — what exactly should be achieved;
+- **Measurable** — how completion can be verified;
+- **Achievable** — whether the outcome is realistically actionable;
+- **Relevant** — why it matters / which domain or larger goal it belongs to;
+- **Time-bound** — deadline or review point when one is meaningful.
+
+SMART is a tool for clarification, not a rigid requirement to invent arbitrary deadlines or metrics. Heimdall should ask for or infer only information that is actually useful.
+
+Not every note must become a project. Pure reference information, ideas without current action intent, records, or journal-like notes may remain informational — but that should be an intentional classification rather than an accidental dead end.
+
+This principle is cross-domain and should apply to Car, Home, Finance, Projects, and future agents.
