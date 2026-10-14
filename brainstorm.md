@@ -286,3 +286,36 @@ Before implementation we still need to decide:
 ## 14. Next step
 
 Use the Car Agent to define concrete user stories and select one narrow vertical slice for the first MVP. Then derive module contracts and only after that choose the implementation framework and infrastructure.
+
+
+## 15. Security and guardrails — non-negotiable principle
+
+Security must be treated as a first-class architectural concern in every agent, module, integration, and workflow — especially when Heimdall can perform or prepare real-world actions.
+
+Key threat classes to design for:
+
+- direct and indirect prompt injection;
+- malicious instructions embedded in web pages, emails, documents, images, OCR results, tool output, or other untrusted content;
+- phishing and social engineering;
+- unauthorized purchases, payments, subscriptions, bookings, or account changes;
+- malicious or compromised tools/integrations;
+- data exfiltration and leakage between agents/domains;
+- privilege escalation and excessive tool permissions;
+- poisoned or untrusted persistent memory;
+- forged/ambiguous confirmations and identity/session issues.
+
+Core principles:
+
+- Treat all external content as untrusted data, never as authoritative system instructions.
+- LLM output alone must never authorize a sensitive action.
+- Enforce permissions and policy in deterministic code outside the LLM.
+- Use least-privilege access for agents, modules, credentials, and integrations.
+- Separate read/analyze capabilities from write/execute capabilities.
+- Require explicit authorization according to risk for purchases, payments, destructive actions, and other consequential operations.
+- Validate action parameters and targets immediately before execution.
+- Preserve provenance: know where important facts/instructions came from.
+- Keep auditable records of consequential actions and approvals.
+- Isolate secrets from prompts/context wherever possible.
+- Design every new module and agent with a security/threat-model review, not as a later hardening step.
+
+Security and guardrails should therefore be reviewed continuously throughout Heimdall's design and implementation, not postponed until the end.
