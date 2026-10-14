@@ -7,10 +7,11 @@
 - [brainstorm.md](./brainstorm.md) — original ideas and exploration, preserved for history.
 - [REQUIREMENTS.md](./REQUIREMENTS.md) — product behavior, candidate scope, open decisions, and traceability back to every brainstorm section.
 - [PRINCIPLES.md](./PRINCIPLES.md) — binding cross-cutting design principles and component checklist.
+- [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md) — pragmatic SOLID/KISS/DRY/YAGNI guidance, quality gates and standards-gap assessment.
 - **This file** — phases, sequencing, deliverables, and completion gates; not a second copy of requirements.
 - [README.md](./README.md) — navigation and project status.
 
-**Mandatory gates for every phase and new agent/module/integration:** (1) verify relevant requirements and mark each as agreed, candidate or open; (2) review PRINCIPLES, including threat model/prompt injection, least privilege, authorization, Build vs Reuse, resource efficiency, reliability, data ownership; (3) define observable acceptance tests and failure behavior; (4) document new decisions and unresolved issues; (5) update README/status and the requirements traceability when scope changes. No phase is marked complete based solely on writing a document.
+**Mandatory gates for every phase and new agent/module/integration:** (1) verify relevant requirements and mark each as agreed, candidate or open; (2) review PRINCIPLES and ENGINEERING_STANDARDS, including threat model/prompt injection, least privilege, authorization, Build vs Reuse, KISS/YAGNI/DRY/SOLID, resource efficiency, reliability and data ownership; (3) define observable acceptance tests and failure behavior; (4) document new decisions and unresolved issues; (5) update README/status and the requirements traceability when scope changes. No phase is marked complete based solely on writing a document.
 
 ## Current status
 
@@ -270,6 +271,8 @@ Set up:
 - logging/observability baseline;
 - security checks.
 
+**Engineering gate:** CI must run formatting/lint, static types, builds, focused tests and suitable dependency/secrets checks once code exists. Define reproducible dependency versions, code review criteria and documented release/migration procedures. Do not mark checks implemented before they execute successfully.
+
 **Result:** runnable Heimdall skeleton.
 
 ---
@@ -289,6 +292,8 @@ The goal is not a demo with mocked architecture, but a small real system that va
 - notifications;
 - audit trail;
 - failure handling.
+
+**Engineering gate:** trace UC/requirements to executed unit, contract, integration, adversarial and selected end-to-end tests. Validate API/event compatibility, state invariants, retries/idempotency, observability and recovery, following [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
 
 **Result:** first working Heimdall workflow.
 
