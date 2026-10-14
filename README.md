@@ -6,7 +6,7 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 
 ## Project status
 
-**Current phase:** concept and requirements definition.
+**Current phase:** Phase 3 — selection and formalization of the first MVP vertical slice (Hrimfaxi).
 
 **Current work and the next concrete step are tracked in [PROGRESS.md](./PROGRESS.md).** The brainstorming and requirements audit are complete. The first vehicle domain agent has now been named **Hrimfaxi**, with an initial specification and ten user scenarios. **Current phase: choose and formalize the first MVP vertical slice (Phase 3).** The proposed candidates are fault reporting (UC-01) and invoice ingestion (UC-03); the final selection is still open.
 
