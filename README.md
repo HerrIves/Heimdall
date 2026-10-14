@@ -15,12 +15,13 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 1. **[PROGRESS.md](./PROGRESS.md)** — current stage, completed work, blockers, and the exact next action. Read this first when continuing work.
 2. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
 3. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
-4. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
-5. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
-6. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
-7. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
-8. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
-9. **README.md** — this document: repository introduction and documentation map.
+4. **[ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md)** — SOLID, KISS, DRY, YAGNI, quality gates and review against engineering/security references.
+5. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
+6. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
+7. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
+8. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
+9. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
+10. **README.md** — this document: repository introduction and documentation map.
 
 The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
 
@@ -42,6 +43,7 @@ The authoritative checklist lives in **[PRINCIPLES.md](./PRINCIPLES.md)**. Key c
 - Prompt injection, indirect injection, phishing, permission abuse, data leakage, and excessive privileges must be considered for every relevant feature.
 - Financial, dangerous, sensitive, or irreversible actions require deterministic checks and appropriate user approval.
 - **Build vs Reuse:** evaluate shared modules and vetted libraries/providers before writing new generic infrastructure; review security, licensing, maintainability, cost and exit strategy.
+- **Engineering rigor:** apply SOLID, KISS, DRY, YAGNI pragmatically; require testable contracts, verified CI quality gates and trustworthy evidence of security controls. See [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
 - Resources are minimized by design: do not use an LLM, expensive model, background process, or continuous polling when a simpler deterministic or event-driven mechanism is sufficient.
 
 ## First domain agent: Hrimfaxi (vehicle)
@@ -65,6 +67,7 @@ To avoid documents overlapping:
 - current position, completed work, next concrete action → **PROGRESS.md**
 - product behavior, scope, candidates, open decisions, traceability → **REQUIREMENTS.md**
 - stable cross-cutting rules → **PRINCIPLES.md**
+- how to apply code-quality practices, testing/CI expectations, standards-gap assessment → **ENGINEERING_STANDARDS.md**
 - development sequence and milestones → **PLAN.md**
 - exploratory ideas and historical reasoning → **brainstorm.md**
 - repository orientation and documentation links → **README.md**
