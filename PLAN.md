@@ -10,7 +10,7 @@
 - **This file** — phases, sequencing, deliverables, and completion gates; not a second copy of requirements.
 - [README.md](./README.md) — navigation and project status.
 
-**Mandatory gates for every phase and new agent/module/integration:** (1) verify relevant requirements and mark each as agreed, candidate or open; (2) review PRINCIPLES, including threat model/prompt injection, least privilege, authorization, resource efficiency, reliability, data ownership; (3) define observable acceptance tests and failure behavior; (4) document new decisions and unresolved issues; (5) update README/status and the requirements traceability when scope changes. No phase is marked complete based solely on writing a document.
+**Mandatory gates for every phase and new agent/module/integration:** (1) verify relevant requirements and mark each as agreed, candidate or open; (2) review PRINCIPLES, including threat model/prompt injection, least privilege, authorization, Build vs Reuse, resource efficiency, reliability, data ownership; (3) define observable acceptance tests and failure behavior; (4) document new decisions and unresolved issues; (5) update README/status and the requirements traceability when scope changes. No phase is marked complete based solely on writing a document.
 
 ## Current status
 
@@ -108,6 +108,8 @@ Define:
 - user confirmations;
 - output;
 - failure/ambiguity paths.
+
+**Guardrail gate:** review [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md), resolve critical unsafe assumptions and record Build vs Reuse decisions; a specification review is not a runtime test.
 
 **Gate:** demonstrate the entire capture → classification → action/project → tracking lifecycle when relevant, including errors, human approvals, retries and notification behavior; record the acceptance tests.
 
