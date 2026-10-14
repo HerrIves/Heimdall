@@ -2,6 +2,16 @@
 
 > High-level roadmap from brainstorm to a working personal assistant. This document describes the order of design and implementation. Detailed technical decisions belong in dedicated documents.
 
+## Documentation ownership and review gates
+
+- [brainstorm.md](./brainstorm.md) — original ideas and exploration, preserved for history.
+- [REQUIREMENTS.md](./REQUIREMENTS.md) — product behavior, candidate scope, open decisions, and traceability back to every brainstorm section.
+- [PRINCIPLES.md](./PRINCIPLES.md) — binding cross-cutting design principles and component checklist.
+- **This file** — phases, sequencing, deliverables, and completion gates; not a second copy of requirements.
+- [README.md](./README.md) — navigation and project status.
+
+**Mandatory gates for every phase and new agent/module/integration:** (1) verify relevant requirements and mark each as agreed, candidate or open; (2) review PRINCIPLES, including threat model/prompt injection, least privilege, authorization, resource efficiency, reliability, data ownership; (3) define observable acceptance tests and failure behavior; (4) document new decisions and unresolved issues; (5) update README/status and the requirements traceability when scope changes. No phase is marked complete based solely on writing a document.
+
 ## Current status
 
 - [x] Initial product brainstorm
@@ -12,6 +22,7 @@
 - [x] LLM-provider independence
 - [x] Security and guardrails as a first-class requirement
 - [x] Resource-efficiency principle
+- [x] Initial requirements traceability audit (`REQUIREMENTS.md`)
 - [ ] Define and build the first reference agent
 
 ---
@@ -37,11 +48,11 @@ After this point, new implementation details should primarily go into dedicated 
 
 ---
 
-## Phase 2 — Define the Car Agent
+## Phase 2 — Define the Vehicle Domain Agent (working label; final Norse name open)
 
 Use the Car Agent as the first reference domain agent.
 
-Create `CAR_AGENT.md` and describe what the agent should do in real life before deciding how it is implemented.
+Create the first agent's behavioral specification (working filename `CAR_AGENT.md`, subject to its Norse-inspired name) using `REQUIREMENTS.md`. Describe what it should do in real life before deciding how it is implemented. Capture acceptance criteria and how notes become managed outcomes.
 
 Define:
 
@@ -68,6 +79,8 @@ Describe concrete end-to-end user stories, for example:
 - record fuel/charging or repair expense;
 - remind and follow up until maintenance is completed.
 
+**Gate:** every chosen scope item must trace to an explicit requirement or newly reviewed decision; include SMART-style note-to-work lifecycle, channel behavior, threat cases, permissions and resource constraints.
+
 **Result:** a clear behavioral specification for the first agent.
 
 ---
@@ -93,6 +106,8 @@ Define:
 - user confirmations;
 - output;
 - failure/ambiguity paths.
+
+**Gate:** demonstrate the entire capture → classification → action/project → tracking lifecycle when relevant, including errors, human approvals, retries and notification behavior; record the acceptance tests.
 
 **Result:** first implementable Heimdall workflow.
 
@@ -154,6 +169,8 @@ Specify:
 - audit trail and observability.
 
 Resolve cross-domain ownership, especially questions such as how a Car Agent expense contributes to the future global Finance domain without duplicated state.
+
+**Gate:** document the decision status (accepted vs candidate), component trust boundaries, cross-domain data ownership and multi-channel consistency; audit against PRINCIPLES.md.
 
 **Result:** Heimdall architecture v1.
 
@@ -295,9 +312,9 @@ Continuously refine shared modules instead of duplicating capabilities inside th
 
 ---
 
-## Phase 12 — Build user interfaces
+## Phase 12 — Build user interfaces (deliver a minimal capture channel early in phase 10)
 
-Develop clients against the same Heimdall backend.
+Develop clients against the same Heimdall backend. **A minimal usable intake/notification channel is required for phase 10**; full app and Telegram client experiences may arrive later. Do not mistake this ordering for delaying all interaction until phase 12.
 
 ### Mobile app
 
@@ -363,6 +380,6 @@ For every new agent/module:
 
 ## Immediate next step
 
-Create `CAR_AGENT.md` and brainstorm the Car Agent's real-world responsibilities and end-to-end scenarios.
+Use `REQUIREMENTS.md` to specify the first vehicle agent's real-world responsibilities and end-to-end scenarios, choose its Norse-inspired name, and select the first vertical slice. Keep all requirements and principles traceable.
 
 Do **not** choose the agent framework or implementation stack yet. The first Car Agent scenarios should drive those decisions.
