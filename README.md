@@ -8,15 +8,16 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 
 **Current phase:** concept and requirements definition.
 
-The brainstorming and initial requirements-to-principles/plan audit are complete. The next focus is defining the first **vehicle domain agent**, a working label until its Norse-inspired name is chosen, with end-to-end scenarios and acceptance criteria before selecting a technical stack.
+**Current work and the next concrete step are tracked in [PROGRESS.md](./PROGRESS.md).** The brainstorming and requirements audit are complete. The next focus is defining the first **vehicle domain agent** (working label; Norse-inspired name not yet chosen), with end-to-end scenarios and acceptance criteria before selecting a technical stack.
 
 ## Start here
 
-1. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
-2. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
-3. **[PLAN.md](./PLAN.md)** — the delivery roadmap, milestones and review gates.
-4. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
-5. **README.md** — this document: navigation and current project status.
+1. **[PROGRESS.md](./PROGRESS.md)** — current stage, completed work, blockers, and the exact next action. Read this first when continuing work.
+2. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
+3. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
+4. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
+5. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
+6. **README.md** — this document: repository introduction and documentation map.
 
 The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
 
@@ -57,11 +58,12 @@ Agents, modules, and major services may use names inspired by Norse mythology wh
 
 To avoid documents overlapping:
 
+- current position, completed work, next concrete action → **PROGRESS.md**
 - product behavior, scope, candidates, open decisions, traceability → **REQUIREMENTS.md**
 - stable cross-cutting rules → **PRINCIPLES.md**
 - development sequence and milestones → **PLAN.md**
 - exploratory ideas and historical reasoning → **brainstorm.md**
-- repository orientation and current focus → **README.md**
+- repository orientation and documentation links → **README.md**
 - agent-specific requirements and scenarios → dedicated agent documents as they are created
 
 README should point to the source of truth instead of duplicating its details.
