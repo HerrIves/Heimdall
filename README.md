@@ -8,16 +8,17 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 
 **Current phase:** concept and requirements definition.
 
-The initial brainstorming is complete. The next focus is defining the first domain agent — the **Vehicle / Car Agent** — through concrete end-to-end user scenarios before committing to implementation details or a technology stack.
+The brainstorming and initial requirements-to-principles/plan audit are complete. The next focus is defining the first **vehicle domain agent**, a working label until its Norse-inspired name is chosen, with end-to-end scenarios and acceptance criteria before selecting a technical stack.
 
 ## Start here
 
-Use the repository documents according to their responsibility:
+1. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
+2. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
+3. **[PLAN.md](./PLAN.md)** — the delivery roadmap, milestones and review gates.
+4. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
+5. **README.md** — this document: navigation and current project status.
 
-1. **README.md** — repository entry point, document map, and current focus.
-2. **[brainstorm.md](./brainstorm.md)** — product exploration, rationale, examples, and historical thinking. It is context, not the everyday 
-3. **[PRINCIPLES.md](./PRINCIPLES.md)** — stable, cross-cutting rules and the checklist for creating or changing agents, modules, features, and integrations.checklist.
-4. **[PLAN.md](./PLAN.md)** — development stages, sequence, and current direction.
+The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
 
 ## Core concept
 
@@ -38,7 +39,7 @@ The authoritative checklist lives in **[PRINCIPLES.md](./PRINCIPLES.md)**. Key c
 - Financial, dangerous, sensitive, or irreversible actions require deterministic checks and appropriate user approval.
 - Resources are minimized by design: do not use an LLM, expensive model, background process, or continuous polling when a simpler deterministic or event-driven mechanism is sufficient.
 
-## First domain agent: Vehicle
+## First domain agent: Vehicle (working label; name undecided)
 
 The first concrete domain is vehicle ownership and maintenance.
 
@@ -56,6 +57,7 @@ Agents, modules, and major services may use names inspired by Norse mythology wh
 
 To avoid documents overlapping:
 
+- product behavior, scope, candidates, open decisions, traceability → **REQUIREMENTS.md**
 - stable cross-cutting rules → **PRINCIPLES.md**
 - development sequence and milestones → **PLAN.md**
 - exploratory ideas and historical reasoning → **brainstorm.md**
