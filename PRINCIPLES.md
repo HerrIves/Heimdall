@@ -2,7 +2,7 @@
 
 > Mandatory design checklist for every agent, module, integration, workflow, and major feature.
 >
-> `brainstorm.md` preserves the product thinking. This document contains the principles we actively apply during design and implementation.
+> `brainstorm.md` preserves the product thinking. This document contains the principles we actively apply during design and implementation. For the engineering interpretation, practical checklist and current standards-gap assessment, see [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
 
 ## How to use this document
 
@@ -12,7 +12,7 @@ Whenever a new agent, module, integration, workflow, or major feature is designe
 2. Identify which principles apply.
 3. Explicitly address security, permissions, data ownership, reliability, resource usage, and failure behavior.
 4. Record justified exceptions instead of silently violating a principle.
-5. Revisit this checklist before implementation is considered complete.
+5. Revisit this checklist before implementation is considered complete. A design review is not evidence that code has been tested or that any external standard has been met.
 
 ---
 
@@ -209,6 +209,60 @@ Before implementing a new capability, first look for a suitable **existing Heimd
 
 ---
 
+## 26. SOLID and separation of concerns — applied pragmatically
+
+Design components around clear responsibilities and stable contracts. Where SOLID applies, use:
+
+- **SRP:** a class/module has one coherent reason to change; keep domain logic, transport, storage and security enforcement separate.
+- **OCP:** allow approved new agents/providers through deliberate extension points without rewriting core orchestration.
+- **LSP:** alternate implementations preserve the same observable behavior, error semantics, authorization guarantees and expectations; verify via contract tests.
+- **ISP:** expose narrow interfaces and minimal capability sets; read-only tools must not automatically expose write/payment methods.
+- **DIP:** high-level domain decisions depend on contracts, not concrete LLM vendors, Telegram clients, databases, or HTTP adapters.
+
+**Do not create interfaces, layers, services or inheritance hierarchies merely to satisfy SOLID.** Apply these ideas where genuine variation, testability or responsibility boundaries justify them.
+
+## 27. KISS, YAGNI and DRY — complexity must earn its place
+
+- **KISS:** prefer the simplest *safe, correct, understandable and maintainable* design. Avoid unnecessary indirection, magic frameworks and hidden state.
+- **YAGNI:** do not build features or generalized extension points for speculative needs. Validate one real end-to-end scenario before generalizing.
+- **DRY:** avoid duplicated *business knowledge*, policies or proven shared mechanisms. Do not prematurely combine different domains merely because their code looks similar.
+- **Evolutionary design:** prefer small, reversible, tested changes. Start with a modular, clearly bounded application; choose distributed services only with concrete reasons.
+
+When principles conflict, prioritize user outcome, security, correctness, reliability and clarity over code compactness or fashionable architecture.
+
+## 28. Automated verification and quality gates
+
+For implemented behavior, require executable evidence, not just design documents:
+
+- trace requirements/user scenarios to measurable acceptance criteria and tests;
+- use a proportionate mix of fast deterministic unit tests, contract tests, integrations, critical end-to-end journeys and adversarial/abuse tests;
+- explicitly test failure, cancellation, retries, duplicate events, invalid input, authorization bypass attempts and recovery where relevant;
+- automate formatting, linting, static typing, builds and relevant security/dependency/secret checks in CI;
+- keep changes reviewable; fix regressions with focused tests;
+- never confuse high test coverage, green unrelated tests, or an LLM-generated narrative with verified correctness.
+
+No blanket percentage target or rigid test pyramid ratio is mandated. Choose tests based on risks and maintainability.
+
+## 29. Contract evolution, data integrity and operability
+
+Define typed API/event schemas, canonical states, data owners and error semantics. Evolve persisted data and consumer-facing contracts with versioning/compatibility checks, migrations and recovery plans.
+
+Use idempotent handlers, transaction boundaries or compensating actions as necessary. Make important flows observable through appropriately redacted logs, metrics, trace/correlation identifiers and auditable events. Provide bounded timeouts, retries, backoff, cancellation, health monitoring, backups and restoration procedures where operational risk warrants them.
+
+Prefer reproducible environments, explicit dependency versions, separated configuration/secrets, consistent deploy processes and rollback/forward-fix plans. Design delivery and operability together with features, not as an afterthought.
+
+## 30. Secure software development lifecycle and honest standards claims
+
+Use established security verification practices as references for design, development, dependencies, CI and vulnerability response. In particular, evaluate relevant [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) and [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) controls during implementation.
+
+- Record risk, control, owner and **actual evidence** (tests, reviews, configuration or monitoring).
+- Track third-party dependencies and updates; patch or mitigate vulnerabilities and document exceptions.
+- Never assert formal compliance/certification based only on design intentions, principle labels, or checklists.
+
+**SOLID, KISS, DRY and YAGNI are practical heuristics, not certifiable security standards.** Detailed application, open gaps and review gates belong in [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
+
+---
+
 ## Component design checklist
 
 Before approving a new component, answer:
@@ -234,6 +288,11 @@ Before approving a new component, answer:
 - Was Build vs Reuse evaluated (existing internal module, mature library/service, or justified custom code), including security, licenses, operating costs, support and vendor exit?
 - Have high-impact safety claims and unknown/ambiguous inputs been explicitly bounded?
 - Are writes and event handlers idempotent, with approval, deduplication and provenance checks as applicable?
+- Is the design consistent with SOLID where appropriate (SRP/OCP/LSP/ISP/DIP), with clear layer and trust boundaries?
+- Can KISS/YAGNI/DRY reduce complexity without erasing distinct domain rules or compromising safety?
+- What acceptance, contract, integration, failure and abuse tests provide **executable** evidence, and which CI checks will run them?
+- Are API/events and state versioned/evolvable, with idempotency, migration, observability, rollback and recovery where relevant?
+- Are relevant security verification references reviewed without prematurely claiming compliance?
 - Is a Norse name appropriate and meaningful?
 
 If these questions cannot be answered, the component is not ready for implementation.
