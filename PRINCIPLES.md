@@ -194,6 +194,21 @@ Names should communicate purpose, not merely decorate the codebase. Keep ordinar
 
 ---
 
+## 25. Build vs Reuse — prefer justified reuse, not blind dependency adoption
+
+Before implementing a new capability, first look for a suitable **existing Heimdall module, maintained library, service or proven standard**. Reuse an existing well-fitted component when it meets functional, operational and security needs more safely and economically than custom code.
+
+- **Evaluate, don't assume:** assess functional fit, trust boundaries, least-privilege support, license, maintainability, security patch history, privacy/data residency, interoperability, observability, performance, resource/API costs and exit strategy.
+- **Reuse internally first:** extend a shared platform capability when appropriate; avoid each domain agent implementing its own OCR, task scheduler, budget ledger, notifications, authentication or authorization layer.
+- **Build only with a reason:** custom implementation is justified when existing alternatives cannot satisfy key requirements, are unacceptably risky or expensive over their lifecycle, or when domain-specific policy/workflows are the actual differentiating logic.
+- **Keep adapters and contracts replaceable:** prevent hard coupling to one vendor or framework; define ownership of data and secrets before integration.
+- **No dependency without guardrails:** a third-party library, API or model never becomes trusted by virtue of being reused. Validate inputs/outputs, review supply-chain risk, restrict credentials/scopes, and test failure modes.
+- **Decision record:** for every meaningful capability, document candidates considered, reuse/build choice, rationale, rejected alternatives, responsible owner, and planned review date. Avoid premature abstraction where the use case is not yet proven.
+
+**Default:** build the smallest domain-specific orchestration; reuse safe, fit-for-purpose generic primitives. This is a decision process, not a ban on writing software.
+
+---
+
 ## Component design checklist
 
 Before approving a new component, answer:
@@ -216,6 +231,9 @@ Before approving a new component, answer:
 - How is unnecessary compute/model/API usage avoided?
 - Does it duplicate responsibility or state already owned elsewhere?
 - Does it support proactive behavior, and is that behavior actually useful?
+- Was Build vs Reuse evaluated (existing internal module, mature library/service, or justified custom code), including security, licenses, operating costs, support and vendor exit?
+- Have high-impact safety claims and unknown/ambiguous inputs been explicitly bounded?
+- Are writes and event handlers idempotent, with approval, deduplication and provenance checks as applicable?
 - Is a Norse name appropriate and meaningful?
 
 If these questions cannot be answered, the component is not ready for implementation.
