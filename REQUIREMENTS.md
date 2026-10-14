@@ -113,9 +113,9 @@
 
 **REQ-D01 · Agreed.** `brainstorm.md` preserves original thinking; `PRINCIPLES.md` is the recurring design checklist; `REQUIREMENTS.md` is the behavior/scope baseline; `PLAN.md` is the sequence of delivery; `README.md` is the navigation and current status.
 
-**REQ-D02 · Agreed.** Architectural choices, security threat model, module contracts, and vehicle-agent detailed specification will live in dedicated documents **when those stages start**. They do not exist yet.
+**REQ-D02 · Agreed.** Architectural choices, security threat model and shared module contracts will live in dedicated documents when those stages start. The initial vehicle-agent specification and scenario review **already exist** in [CAR_AGENT.md](./CAR_AGENT.md), [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), and [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md). Engineering quality guidance is in [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md). These documents are not evidence of implemented functionality.
 
-**REQ-D03 · Agreed.** Naming from Norse mythology is a considered preference for meaningful components, not a requirement to rename every file, database table, or helper. Do not invent a final Vehicle agent name.
+**REQ-D03 · Agreed.** Naming from Norse mythology is a considered preference for meaningful components, not a requirement to rename every file, database table, or helper. The first Vehicle agent's chosen name is **Hrimfaxi**.
 
 ## 10. Traceability: original brainstorm → specification / plan / principles
 
