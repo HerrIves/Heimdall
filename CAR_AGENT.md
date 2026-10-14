@@ -146,10 +146,10 @@ The Car Agent delegates non-domain capabilities to reusable platform modules:
    - Detects `Incident` related to `subsystem: brakes`.
    - Associates with the active vehicle.
    - Checks `MaintenanceLog`: finds front pads were changed 40,000 km ago.
-   - Responds: *"Recorded a brake check task for [Car Name]. Front pads were last replaced 40,000 km ago, so wear is likely. Should I prepare compatible pad options or remind you to schedule an inspection?"*
+   - Responds: *"Recorded a brake check task for [Car Name]. Front pads were last replaced 40,000 km ago; that history alone cannot determine the cause or driving safety. Should I prepare compatible pad options or remind you to schedule an inspection?"*
    - Registers active `WorkItem` with status `investigating`.
 
-### Scenario B: Service Invoice Ingestion (Leading MVP Slice)
+### Scenario B: Service Invoice Ingestion (MVP candidate UC-03; selection pending)
 1. **User input:** User uploads a photo of an invoice from an auto repair shop.
 2. **Agent actions:**
    - Calls `Documents / OCR` to extract vendor, date, mileage, line items, and totals.
@@ -180,5 +180,21 @@ The Car Agent delegates non-domain capabilities to reusable platform modules:
 ## 6. Security and Policy Guardrails
 
 1. **Deterministic Execution Boundaries:** LLM output cannot authorize payments, order items, or modify vehicle identity data without human confirmation.
-2. **Document Sanitization:** Invoices and external documents are treated as untrusted input. Prompt injection checks run prior to feeding parsed OCR text to reasoning models.
-3. **Audit Trail:** Every status change, mileage update, and recorded expense produces an immutable audit record.
+2. **Untrusted document boundary:** Invoices and external documents are untrusted data, including OCR output and embedded instructions. Strictly separate retrieved content from executable instructions. Prompt-injection screening may help detection but is **not** the authorization control; enforce allowlisted actions, validated schemas, scopes and approvals deterministically.
+3. **Audit Trail:** Every status change, mileage update, and recorded expense produces a durable, access-controlled audit record. Avoid falsely claiming immutable or tamper-proof storage before that mechanism is specified.
+
+
+---
+
+## 7. Cross-case safety and consistency requirements (review 2026-10-14)
+
+- **Case status:** the ten scenarios in [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md) are design candidates, not implemented tests. Findings and implementation blockers are tracked in [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md).
+- **Incident state consistency:** the canonical statuses in section 2.2 are `new`, `triaged`, `investigating`, `action_scheduled`, `resolved`, `closed`. The flow diagram describes process stages, not persisted status values. Scenario shorthand such as `active_tracking` is not an approved status; define mapping or update the schema before code.
+- **Persist without waiting for a question:** for a credible safety-related observation, persist a provisional intake/work item even when vehicle identification is unresolved. Do not lose the report or automatically close it.
+- **Safety escalation:** symptoms involving brakes, steering, severe overheating or critical warnings need immediate conservative triage, not a generic 48-hour reminder. Never infer roadworthiness from an LLM guess, light color or mileage history.
+- **Vehicle profile changes:** distinguish an observed service mileage from the latest current odometer; update current mileage only with validated chronology and source. Examples of service intervals are placeholders until sourced from vehicle-specific rules.
+- **Expense/event ownership:** vehicle expenses need unique IDs, deduplication/idempotency and an explicit finance integration contract. Document linkage is optional: not every maintenance event has an invoice, and one invoice can contain multiple services.
+- **Action permissions:** maintain distinct draft/confirm/execute paths. External requests, purchase preparation and personal-data export need the applicable policy checks; paid bookings and actual payments always require explicit authenticated approval.
+- **Provenance and data minimization:** track where claims come from, avoid sharing full VIN/insurance numbers when not necessary, mask or redact on low-trust channels.
+- **Build vs Reuse:** use platform capability contracts for tasks, reminders, document extraction, persistence, notifications, budgets and policy. For each external service/library or custom implementation, document security, maintainability, licensing, cost, data location and lock-in; see [PRINCIPLES.md](./PRINCIPLES.md) section 25.
+- **No premature MVP selection:** the cases catalog labels UC-01 a prototype slice while the invoice flow UC-03 is another candidate. User approval and specific acceptance criteria are required before confirming the first slice.
