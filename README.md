@@ -14,10 +14,10 @@ The initial brainstorming is complete. The next focus is defining the first doma
 
 Use the repository documents according to their responsibility:
 
-1. **[PRINCIPLES.md](./PRINCIPLES.md)** — stable, cross-cutting rules and the checklist for creating or changing agents, modules, features, and integrations.
-2. **[PLAN.md](./PLAN.md)** — development stages, sequence, and current direction.
-3. **[brainstorm.md](./brainstorm.md)** — product exploration, rationale, examples, and historical thinking. It is context, not the everyday checklist.
-4. **README.md** — repository entry point, document map, and current focus.
+1. **README.md** — repository entry point, document map, and current focus.
+2. **[brainstorm.md](./brainstorm.md)** — product exploration, rationale, examples, and historical thinking. It is context, not the everyday 
+3. **[PRINCIPLES.md](./PRINCIPLES.md)** — stable, cross-cutting rules and the checklist for creating or changing agents, modules, features, and integrations.checklist.
+4. **[PLAN.md](./PLAN.md)** — development stages, sequence, and current direction.
 
 ## Core concept
 
