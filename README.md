@@ -8,7 +8,7 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 
 **Current phase:** concept and requirements definition.
 
-**Current work and the next concrete step are tracked in [PROGRESS.md](./PROGRESS.md).** The brainstorming and requirements audit are complete. The next focus is defining the first **vehicle domain agent** (working label; Norse-inspired name not yet chosen), with end-to-end scenarios and acceptance criteria before selecting a technical stack.
+**Current work and the next concrete step are tracked in [PROGRESS.md](./PROGRESS.md).** The brainstorming and requirements audit are complete. The first vehicle domain agent has now been named **Hrimfaxi**, with an initial specification and ten user scenarios. **Current phase: choose and formalize the first MVP vertical slice (Phase 3).** The proposed candidates are fault reporting (UC-01) and invoice ingestion (UC-03); the final selection is still open.
 
 ## Start here
 
@@ -16,8 +16,10 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 2. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
 3. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
 4. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
-5. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
-6. **README.md** — this document: repository introduction and documentation map.
+5. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
+6. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
+7. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
+8. **README.md** — this document: repository introduction and documentation map.
 
 The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
 
@@ -40,9 +42,9 @@ The authoritative checklist lives in **[PRINCIPLES.md](./PRINCIPLES.md)**. Key c
 - Financial, dangerous, sensitive, or irreversible actions require deterministic checks and appropriate user approval.
 - Resources are minimized by design: do not use an LLM, expensive model, background process, or continuous polling when a simpler deterministic or event-driven mechanism is sufficient.
 
-## First domain agent: Vehicle (working label; name undecided)
+## First domain agent: Hrimfaxi (vehicle)
 
-The first concrete domain is vehicle ownership and maintenance.
+The first concrete domain is vehicle ownership and maintenance. The domain agent is named **Hrimfaxi** (Hrímfaxi); see [CAR_AGENT.md](./CAR_AGENT.md) and [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md). These are design documents, not implemented code.
 
 Expected areas include vehicle details and history, maintenance and repairs, expenses and budgets, parts and purchases, documents, deadlines, recurring obligations, and observations that can become actionable projects.
 
@@ -64,6 +66,6 @@ To avoid documents overlapping:
 - development sequence and milestones → **PLAN.md**
 - exploratory ideas and historical reasoning → **brainstorm.md**
 - repository orientation and documentation links → **README.md**
-- agent-specific requirements and scenarios → dedicated agent documents as they are created
+- first agent specification and proposed scenarios → **CAR_AGENT.md**, **HRIMFAXI_USER_CASES.md**
 
 README should point to the source of truth instead of duplicating its details.
