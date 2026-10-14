@@ -6,24 +6,26 @@
 >
 > **Important distinction:** SOLID, KISS, DRY, YAGNI and Clean Architecture are *engineering heuristics / patterns*, not standards with a universal certification procedure. NIST SSDF and OWASP ASVS are published security frameworks/verification references; alignment requires concrete, independently checked evidence. Do not label the project 'compliant' because these documents mention their names.
 
-## 1. Baseline assessment
+## 1. Assessment after documentation updates
+
+The **documentation** now explicitly includes engineering principles 26–30. The implementation/test evidence remains absent. “Documented” below means a stated project requirement, **not** that we have validated software compliance.
 
 | Practice or reference | Current documentation | Missing verification / decision | What to do |
 | --- | --- | --- | --- |
-| Single responsibility / separation of concerns | **Partially addressed** (Principles 4–7, 20) | No implemented ownership/dependency checks | Define one responsibility per module, domain ownership and code review rules |
-| SOLID (SRP, OCP, LSP, ISP, DIP) | **Implicit/partial**, not yet systematically explained | Interface substitutability and dependency direction unverified | Apply SOLID where polymorphism/interfaces matter; require practical contract tests |
-| KISS | **Implicit** (Principles 18–20, 25) | No explicit design simplicity preference | Choose the smallest comprehensible working solution |
-| YAGNI | **Implicit** (Principles 20, 23) | Risk of building multi-agent abstractions and extra services before use | Implement only approved behavior and tested extension points |
-| DRY | **Partial** (Principles 3–5, 7, 25) | Risk of repeating OCR, billing or notification logic; risk of premature abstraction | One source of truth for stable knowledge; abstract only proven duplication |
+| Single responsibility / separation of concerns | **Explicit in design policy** (Principles 4–7, 20, 26) | No implemented ownership/dependency checks | Define one responsibility per module, domain ownership and code review rules |
+| SOLID (SRP, OCP, LSP, ISP, DIP) | **Explicit in design policy** (Principle 26; section 2 of this guide) | Interface substitutability and dependency direction unverified | Apply SOLID where polymorphism/interfaces matter; require practical contract tests |
+| KISS | **Explicit in design policy** (Principles 18–20, 27) | No explicit design simplicity preference | Choose the smallest comprehensible working solution |
+| YAGNI | **Explicit in design policy** (Principles 20, 23, 27) | Risk of building multi-agent abstractions and extra services before use | Implement only approved behavior and tested extension points |
+| DRY | **Explicit in design policy** (Principles 3–5, 7, 25, 27) | Risk of repeating OCR, billing or notification logic; risk of premature abstraction | One source of truth for stable knowledge; abstract only proven duplication |
 | Build vs Reuse | **Documented** (Principle 25) | No chosen components/decision records | Require evidenced license/security/cost/exit review |
-| Clean/hexagonal architecture | **Partial** (Principles 7, 11, 20) | No actual dependency graph or boundaries | Keep domain policy independent of transports, storage, LLM vendors and frameworks |
+| Clean/hexagonal architecture | **Guidance documented**, selection open (Principles 7, 11, 20, 26) | No actual dependency graph or boundaries | Keep domain policy independent of transports, storage, LLM vendors and frameworks |
 | Domain-driven ownership | **Partial** (Principles 4, 7) | Finance vs Vehicle source-of-truth unsettled | Design aggregates/events and stable ownership before writing to shared ledgers |
-| Automated tests and code quality | **Weak/partial** (Principles 19, 23; Plan 9–10) | No test code, CI, review/coverage policy | Fast unit/domain tests + contracts + integrations + limited user journeys |
-| API/event compatibility | **Partial** (Principle 20) | Event schemas, versioning and migration procedures absent | Specify typed contracts and safe evolution |
-| NIST SSDF / secure SDLC | **Principles align in intent** (12–17, 22, 25) | No secure development process/toolchain, vulnerability response or evidence | Map requirements to SSDF tasks with demonstrable controls |
-| OWASP ASVS / LLM threat categories | **Partial** (Principles 12–16; scenario review) | No versioned control checklist, abuse tests or authenticated confirmation implementation | Choose applicable control level, threat model and run relevant tests |
-| Twelve-Factor operational ideas | **Partial** (Principles 2, 18, 19, 21) | No configuration, deployment, logging, disaster recovery implementation | Adapt configuration/process/service parity practices to the actual runtime |
-| Observability, resilience, release process | **Partial** (Principles 10, 17–19) | No telemetry, rollback or operational runbooks | Design measurable failure signals, recovery, migrations and rollout safeguards |
+| Automated tests and code quality | **Requirements documented** (Principles 19, 23, 28; Plan 9–10) | No test code, CI, review/coverage policy | Fast unit/domain tests + contracts + integrations + limited user journeys |
+| API/event compatibility | **Requirements documented** (Principles 20, 29) | Event schemas, versioning and migration procedures absent | Specify typed contracts and safe evolution |
+| NIST SSDF / secure SDLC | **Principles aligned in intent** (12–17, 22, 25, 30) | No secure development process/toolchain, vulnerability response or evidence | Map requirements to SSDF tasks with demonstrable controls |
+| OWASP ASVS / LLM threat categories | **Control intent documented** (Principles 12–16, 30; scenario review) | No versioned control checklist, abuse tests or authenticated confirmation implementation | Choose applicable control level, threat model and run relevant tests |
+| Twelve-Factor operational ideas | **Guidance documented** (Principles 2, 18, 19, 21, 29) | No configuration, deployment, logging, disaster recovery implementation | Adapt configuration/process/service parity practices to the actual runtime |
+| Observability, resilience, release process | **Guidance documented** (Principles 10, 17–19, 29) | No telemetry, rollback or operational runbooks | Design measurable failure signals, recovery, migrations and rollout safeguards |
 
 **Conclusion:** strong product and security intentions, but **implementation maturity is unverified**. The missing practices are actionable engineering and delivery controls, not a reason to redesign the product before choosing its first vertical slice.
 
