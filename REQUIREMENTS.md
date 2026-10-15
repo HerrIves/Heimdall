@@ -37,13 +37,25 @@
 
 **REQ-A01 · Agreed.** The Heimdall orchestrator interprets incoming requests and events, selects **existing** domain agents, coordinates delegated work, and presents results.
 
-**REQ-A02 · Agreed.** Domain agents own a whole life/business domain and its end-to-end workflows (not one technical primitive). Candidate domains: Vehicle, Finance, Project, Home. Shopping and Documents are **reusable modules** (REQ-A05), not domain agents: they are capabilities used by many agents (PRINCIPLES §5). **Only the Vehicle agent has been chosen as the first reference agent.** The others are possibilities, not a development commitment.
+**REQ-A02 · Agreed.** Domain agents own a whole life/business domain and its end-to-end workflows (not one technical primitive). Candidate domains: Vehicle (Hrimfaxi), Personal administration (Fulla), Finance, Project, Home (Frigg). Shopping and Documents are **reusable modules** (REQ-A05), not domain agents: they are capabilities used by many agents (PRINCIPLES §5). **Only the Vehicle agent has been chosen as the first reference agent.** The others are possibilities, not a development commitment.
 
 **REQ-A03 · Agreed.** Agents/modules are deliberately built, tested, reviewed, configured, and shipped by developers. The orchestrator must **not generate production agents or modules at runtime**.
 
 **REQ-A04 · Agreed.** Use a shared agent runtime/template plus shared capability modules; add domain-specific code when necessary. The agent “factory” is a **development-time reuse concept**, not dynamic autonomous agent creation.
 
-**REQ-A05 · Candidate module inventory.** Tasks / SMART goal tracking, scheduling/calendar, notifications, budget/expenses, payment preparation, documents/file processing, OCR/image understanding, search/research, shopping/price checks, API connectors, persistence/memory. Exact boundaries and contracts remain **open**.
+**REQ-A05 · Candidate module inventory.** Five SMART goal modules are agreed in REQ-A07; further candidates: Tasks / SMART goal tracking, scheduling/calendar, notifications, budget/expenses, payment preparation, documents/file processing, OCR/image understanding, search/research, shopping/price checks, API connectors, persistence/memory. Exact boundaries and contracts remain **open**.
+
+**REQ-A07 · Agreed.** Domain vs platform module. A **domain** is the area an agent is responsible for in substance; each agent has its own and it is not reused (Fulla — personal administration: bills, contracts and notice periods, mail, authorities; Hrimfaxi — vehicle; Frigg — home). A **platform module** is a shared mechanism that works the same for all agents. Everything that can be shared is moved into platform modules as far as possible; domain agents do not re-implement module logic (PRINCIPLES §5). Agreed platform modules for SMART goals:
+
+| Module | Responsibility |
+|---|---|
+| Slot planner | Finds and proposes time; reschedules; writes to the calendar only after user confirmation. Covers backward planning, admin hour, rescheduling, preparation for calendar events |
+| Review | Deterministic regular review of SMART goals (REQ-L08) |
+| Waiting-for | Tracks expected answers from others; reminds and drafts follow-ups |
+| Briefing | Readiness card right before a task |
+| Context provider | Place, free time and tools from voice, geolocation, NFC (REQ-L09) |
+
+Contracts of these modules remain **open** (Plan phase 4). Details: [GLOSSARY.md](./GLOSSARY.md) "Domain vs platform module".
 
 **REQ-A06 · Open.** Agents may need cross-domain information and events. Define ownership and synchronization without duplicate conflicting sources of truth (e.g., a vehicle expense visible in global finances). Decide event-bus vs direct/workflow communication during architecture design.
 
