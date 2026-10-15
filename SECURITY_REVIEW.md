@@ -78,6 +78,24 @@ Once the first MVP and stack are selected:
 - Use a **deterministic authorization middleware**, with user identity, expiry, least privilege, structured arguments, explicit caps, rate limits, audit and reliable retries. Consult OWASP Agent Control Standard for runtime control design; provider-specific systems remain replaceable.
 - Evaluate automated AI code review as **advisory only**. Never feed secrets to a reviewer; sanitize diff, restrict read access, cap costs and treat its output as untrusted. Do not run `pull_request_target` with an untrusted PR checkout.
 
+## Mandatory runtime LLM/agent security test milestone (not implemented yet)
+
+**When:** specify the attack cases and expected security invariants during **Phases 5–6** (architecture and threat model); create the executable testing harness and CI wiring alongside the **first runnable agent/tool boundary in Phases 9–10**. From the first PR introducing executable model-to-tool actions, corresponding abuse tests must be implemented and run in CI. Never defer them to a later hardening phase or require a complete multi-agent system first.
+
+**Minimum adversarial scenarios and assertions:**
+
+1. **Direct and indirect prompt injection:** hostile chat input, OCR invoice/PDF, web content, retrieved context, poisoned memory and tool responses. Assert that injected instructions cannot change system policy, authorize actions, access unrelated data or trigger exfiltration.
+2. **Tool impersonation and tool-output substitution:** spoofed tool identities, descriptions, result formats, sources and tampered arguments. Assert tool allowlist/schema verification, provenance enforcement and no unauthorized command or external request.
+3. **Permission and approval bypass:** fake user consent, forged tool approval, cross-session/agent privilege confusion and unexpected model action plans. Assert deterministic authorization rejects the operation even if the model requests it; a textual refusal alone is insufficient.
+4. **Data leakage and cross-domain isolation:** adversarial requests to reveal secrets, user records, VIN/policy details, hidden prompts or other agents' state. Assert no forbidden disclosure in responses, logs or outgoing tool requests.
+5. **Dangerous side effects and reliability:** arbitrary URL/SSRF, code or shell execution, duplicate payments/bookings, stale confirmations, replayed events, runaway retries/token spending. Assert that no forbidden side effects occur, idempotency holds and quotas/timeouts are respected.
+
+**How the harness should work:** prefer deterministic, offline fixtures, mocked/sandboxed providers and instrumented tool calls for fast PR tests; verify actual policy/permission enforcement, persisted state and outbound calls. Add controlled model-in-the-loop adversarial regression tests as the model gateway becomes runnable, with cost limits, isolated test accounts and no production credentials. Track nondeterministic failures explicitly rather than silently accepting flaky or skipped tests.
+
+**CI activation and release gate:** initially the `security-gate` workflow is only a static pre-screen. Extend or add an always-triggered required security job when the executable agent runtime is introduced. PRs changing prompt templates, agent routing, tools, permissions, memory, OCR/retrieval, integrations or approval paths must run relevant adversarial regressions. A failed critical test blocks merge; no runnable agent handling untrusted input or performing tool side effects is considered **done or deployable** without passing these tests and documented review.
+
+**Evidence/ownership:** map each attack test to a requirement/UC, risk, expected denial/invariant, CI result and owning component. Record any unfixed high-impact gap as a release blocker. The initial tests' absence must remain visible in [PROGRESS.md](./PROGRESS.md).
+
 ## Review policy
 
 - **Block (P0/P1):** unapproved financial actions, unconstrained tool execution, secrets in logs, privilege escalation, untrusted content executing as instruction, CI bypass, critical safety claims without controls, false passed-tests claims.
