@@ -1,8 +1,8 @@
 """Tests for the deterministic security pre-screen (not runtime LLM attack tests)."""
 
-import tempfile
+import io
+from contextlib import redirect_stderr, redirect_stdout
 import unittest
-from pathlib import Path
 
 from scripts.security_gate import changed_files, iter_added_lines, missing_pr_sections, run, scan_diff
 
@@ -94,11 +94,13 @@ class PrDescriptionTests(unittest.TestCase):
 
     def test_passes_doc_only_with_complete_review(self):
         diff = "+++ b/README.md\n@@ -0,0 +1 @@\n+hello"
-        self.assertEqual(run(diff, HEADER), 0)
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            self.assertEqual(run(diff, HEADER), 0)
 
     def test_blocks_dangerous_change(self):
         diff = "+++ b/app.py\n@@ -0,0 +1 @@\n+ex" + "ec(model_output)"
-        self.assertEqual(run(diff, HEADER), 1)
+        with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+            self.assertEqual(run(diff, HEADER), 1)
 
 
 if __name__ == "__main__":
