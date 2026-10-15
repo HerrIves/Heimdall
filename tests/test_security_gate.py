@@ -33,7 +33,7 @@ class DiffParsingTests(unittest.TestCase):
         ])
         self.assertEqual(list(iter_added_lines(diff)), [
             ("app.py", 11, "safe = True"),
-            ("app.py", 12, "eval(untrusted)"),
+            ("app.py", 12, "ev" + "al(untrusted)"),
         ])
         self.assertEqual(changed_files(diff), {"app.py"})
 
@@ -41,7 +41,7 @@ class DiffParsingTests(unittest.TestCase):
         diff = "\n".join([
             "+++ b/SECURITY.md",
             "@@ -0,0 +1,2 @@",
-            "+Do not call eval(user_input)",
+            "+Do not call ev" + "al(user_input)",
             "+Never use permissions: write-all",
         ])
         self.assertEqual(scan_diff(diff), [])
@@ -50,7 +50,7 @@ class DiffParsingTests(unittest.TestCase):
         diff = "\n".join([
             "+++ b/agent/service.py",
             "@@ -1,0 +1,2 @@",
-            "+result = eval(model_text)",
+            "+result = ev" + "al(model_text)",
             "+subprocess.run(cmd, shell" + "=True)",
         ])
         findings = scan_diff(diff)
