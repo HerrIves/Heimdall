@@ -18,6 +18,7 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 4. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
 5. **[ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md)** — SOLID, KISS, DRY, YAGNI, quality gates and review against engineering/security references.
 6. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
+   - **[SECURITY_REVIEW.md](./SECURITY_REVIEW.md)** — mandatory PR security process, threat model and GitHub Ruleset setup.
 7. **[SMART_GOALS.md](./SMART_GOALS.md)** — draft ideas: SMART goal lifecycle, review by the Eisenhower matrix, goal graveyard, execution contexts (voice, geolocation, NFC).
 8. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
 9. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
@@ -45,7 +46,8 @@ The authoritative checklist lives in **[PRINCIPLES.md](./PRINCIPLES.md)**. Key c
 - Prompt injection, indirect injection, phishing, permission abuse, data leakage, and excessive privileges must be considered for every relevant feature.
 - Financial, dangerous, sensitive, or irreversible actions require deterministic checks and appropriate user approval.
 - **Build vs Reuse:** evaluate shared modules and vetted libraries/providers before writing new generic infrastructure; review security, licensing, maintainability, cost and exit strategy.
-- **Engineering rigor:** apply SOLID, KISS, DRY, YAGNI pragmatically; require testable contracts, verified CI quality gates and trustworthy evidence of security controls. See [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
+- **Engineering rigor:** apply SOLID, KISS, DRY, YAGNI pragmatically; require testable contracts, verified CI quality gates and trustworthy evidence of security controls.
+- **PR security gate:** each PR must undergo documented security-impact review, automated scans and, when configured, a required status check in the protected-branch Ruleset. See [SECURITY_REVIEW.md](./SECURITY_REVIEW.md). See [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
 - Resources are minimized by design: do not use an LLM, expensive model, background process, or continuous polling when a simpler deterministic or event-driven mechanism is sufficient.
 
 ## First domain agent: Hrimfaxi (vehicle)
