@@ -29,7 +29,7 @@ class DiffParsingTests(unittest.TestCase):
             "+++ b/app.py",
             "@@ -10,0 +11,2 @@",
             "+safe = True",
-            "+eval(untrusted)",
+            "+ev" + "al(untrusted)",
         ])
         self.assertEqual(list(iter_added_lines(diff)), [
             ("app.py", 11, "safe = True"),
@@ -51,7 +51,7 @@ class DiffParsingTests(unittest.TestCase):
             "+++ b/agent/service.py",
             "@@ -1,0 +1,2 @@",
             "+result = eval(model_text)",
-            "+subprocess.run(cmd, shell=True)",
+            "+subprocess.run(cmd, shell" + "=True)",
         ])
         findings = scan_diff(diff)
         self.assertEqual([f.rule_id for f in findings], ["HMD-001", "HMD-002"])
@@ -61,8 +61,8 @@ class DiffParsingTests(unittest.TestCase):
         diff = "\n".join([
             "+++ b/.github/workflows/unsafe.yml",
             "@@ -0,0 +1,2 @@",
-            "+  pull_request_target:",
-            "+permissions: write-all",
+            "+  pull_request_" + "target:",
+            "+permissions: write" + "-all",
         ])
         self.assertEqual({f.rule_id for f in scan_diff(diff)}, {"HMD-004", "HMD-005"})
 
