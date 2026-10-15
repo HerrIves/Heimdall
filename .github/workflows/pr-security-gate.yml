@@ -1,0 +1,35 @@
+name: Heimdall PR Security Gate
+
+# Runs for EVERY pull request; no path filters, which would risk a required
+# check being skipped. The repository Ruleset must make this job mandatory.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  security-gate:
+    name: security-gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout PR with full git history
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Test scanner behavior
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Review changed lines and PR security explanation
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          python3 scripts/security_gate.py \
+            --base "$PR_BASE_SHA" \
+            --head "$PR_HEAD_SHA" \
+            --event "$GITHUB_EVENT_PATH"
