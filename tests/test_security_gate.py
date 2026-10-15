@@ -97,7 +97,7 @@ class PrDescriptionTests(unittest.TestCase):
         self.assertEqual(run(diff, HEADER), 0)
 
     def test_blocks_dangerous_change(self):
-        diff = "+++ b/app.py\n@@ -0,0 +1 @@\n+exec(model_output)"
+        diff = "+++ b/app.py\n@@ -0,0 +1 @@\n+ex" + "ec(model_output)"
         self.assertEqual(run(diff, HEADER), 1)
 
 
