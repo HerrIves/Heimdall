@@ -12,18 +12,30 @@ A SMART goal (and each of its tasks) has three independent axes:
 | **Context** | *Where and under which conditions* can it be done at all? | place, available free time, tools needed |
 | **Energy** | *How much effort* does it take, and of which kind? | duration; energy index: high focus / routine / physical trip (Part 3) |
 
-### Time formula (the "T" in SMART)
+### Time (the "T" in SMART) and context are separate axes
 
-Not every task needs a calendar slot. "Buy milk" is not done "on Tuesday at 19:00" but "on the next trip to the shop". Therefore:
+The "T" covers **time only**:
+
+- **Hard deadline** — the latest date by which it must be done. **Optional**: many tasks have none.
+- **Scheduled slot** — concrete time in the calendar, used when the task needs one; proposed by the Slot planner and confirmed by the user.
+
+**Place context is not part of T.** It is its own axis (Part 2) and a **second way to trigger a task**, alongside time:
 
 ```
-T  =  hard deadline  +  ( scheduled slot   OR   place context )
-                          "Fri 23.10, 18:30"     "in the shop", "at my desk"
+        TIME  (T)                                 CONTEXT  (separate axis)
+  deadline — optional                        place, free time, tools
+  slot     — when a fixed time is needed     "in the shop", "at my desk"
+            │                                          │
+            ▼                                          ▼
+   triggered by time                          triggered by context
+   "Fri 23.10, 18:30"                         "the user is in the shop"
 ```
 
-- **Hard deadline** — the latest date by which it must be done (may be absent).
-- **Scheduled slot** — concrete time in the calendar, proposed by the Slot planner and confirmed by the user.
-- **Place context** — the task is offered when the user is in the right context (Part 2) instead of at a fixed time.
+| Example | Deadline | Slot | Context | Triggered by |
+|---|---|---|---|---|
+| Pay the Stadtwerke bill | 28.10 | Fri 23.10, 18:30 | — | time |
+| Buy milk | none | none | in the shop | **context trigger** — offered when the user is in the shop |
+| Buy a present by Saturday | Sat | none | in the shop | context; a time reminder as the deadline approaches |
 
 ---
 
