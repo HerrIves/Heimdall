@@ -32,14 +32,14 @@
 6. **Reference certainty (P1):** Sample mileage and timelines are not system defaults. VIN fitment and OCR fields require source evidence/uncertainty. Distinguish historical vs current mileage and configured vs estimated deadlines.
 7. **Privacy (P1):** VIN, registration numbers, policy data and buyer-facing PDFs require purpose limitations, secure channel controls, redaction and controlled access.
 8. **MVP conflict (P1):** UC-01 is labeled MVP in the catalog, whereas UC-03 is framed as leading in the specification. Both remain options until explicitly selected.
-9. **Incomplete outcome lifecycle (P1):** Most scenarios do not show project/work-item status, pause/cancel/reopen, missing-data flow, owner, verified completion, or escalation. Requires per-case criteria.
+9. **Incomplete outcome lifecycle (P1):** Most scenarios do not show SMART goal / work-item status, pause/cancel/reopen, missing-data flow, owner, verified completion, or escalation. Requires per-case criteria.
 10. **German context (P2):** UC-05 currently uses OSAGO/KASKO as generic examples; scope must be locale-aware and support Germany's policy/TÜV terms without asserting universality.
 
 ## Build vs Reuse decision record (design proposal; not package selection)
 
 | Capability | Default approach | Reason / review gate |
 | --- | --- | --- |
-| Heimdall Tasks/Projects, Scheduler, Notifications, Audit | **Reuse internal shared modules**; evaluate established infrastructure behind interfaces | Cross-domain behavior, deterministic execution, idempotency; do not create per-agent copies |
+| Heimdall Tasks / SMART goals, Scheduler, Notifications, Audit | **Reuse internal shared modules**; evaluate established infrastructure behind interfaces | Cross-domain behavior, deterministic execution, idempotency; do not create per-agent copies |
 | OCR / vision, PDF export, weather, retailer lookup | **Reuse evaluated libraries/providers through adapters** | Compare accuracy, licensing, data minimization, availability, cost, supply-chain and vendor exit; no chosen vendors yet |
 | Expense ledger, authorization, identity | **Reuse one shared platform capability / vetted foundation** | Avoid duplicate finance truth and separate payment authority from LLM |
 | Vehicle profile, symptom/risk policies, service interval applicability, fitment evidence | **Build Hrimfaxi-specific rules and workflows** | These are domain-specific differentiators requiring reliable vehicle context |

@@ -127,7 +127,7 @@ The Car Agent delegates non-domain capabilities to reusable platform modules:
 
 | Shared Module | Car Agent Contract & Usage |
 | --- | --- |
-| **Tasks & Projects** | Creates and updates managed items (`Incident`, `ServiceAppointment`, `TireSwap`). |
+| **Tasks / SMART goals** | Creates and updates managed items (`Incident`, `ServiceAppointment`, `TireSwap`). |
 | **Scheduler** | Schedules reminders for upcoming TÜV, service intervals, and unresolved high-severity faults. |
 | **Documents & OCR** | Feeds photo/PDF invoices into the OCR pipeline to receive structured invoice JSON. |
 | **Budget & Finance** | Emits `VehicleExpenseCreated` events so global finances reflect automotive expenses. |

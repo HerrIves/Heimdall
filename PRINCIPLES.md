@@ -18,7 +18,7 @@ Whenever a new agent, module, integration, workflow, or major feature is designe
 
 ## 1. Proactive by default
 
-Heimdall is not only a reactive chatbot. It should monitor relevant state, deadlines, projects, budgets, and events and act or notify when useful.
+Heimdall is not only a reactive chatbot. It should monitor relevant state, deadlines, SMART goals, budgets, and events and act or notify when useful.
 
 Proactivity must be purposeful: avoid noise, unnecessary polling, and notifications without actionable value.
 
@@ -60,13 +60,18 @@ Cross-domain data exchange must be explicit. Avoid duplicated sources of truth a
 
 ## 8. Actionable information lifecycle
 
-Incoming observations, ideas, problems, and intentions must not silently disappear into an unstructured notes pile.
+**Every input must be deliberately classified. No input may hang unresolved.**
 
-Heimdall should intentionally classify information as either reference/informational material or an actionable managed object.
+Any incoming note, observation, problem, idea, or intention — in any domain (vehicle, home, finance, and future agents) — receives an explicit classification as one of:
 
-When actionable, Heimdall should clarify missing information, define the desired outcome, derive tasks/actions, and track the work until completion, cancellation, or another explicit terminal state.
+- **Reference** — information intentionally kept as information, e.g. a VIN, a photo of a vehicle document, a note to remember;
+- **SMART goal** — an actionable item with a clearly defined desired result, tracked until it is achieved, cancelled, or explicitly closed.
 
-Use SMART-style criteria where they improve clarity, but do not invent arbitrary metrics or deadlines just to satisfy a template.
+Leaving an input as a passive, unprocessed note without a decision is not allowed. At the same time, not every input must become a SMART goal: staying informational is a valid result, as long as it is an intentional choice rather than an accidental dead end.
+
+For a SMART goal, Heimdall clarifies missing information, defines the desired result, derives tasks/actions, and tracks the work until completion, cancellation, or another explicit terminal state. Draft ideas for its lifecycle, review rhythm and execution contexts: [SMART_GOALS.md](./SMART_GOALS.md); terms: [GLOSSARY.md](./GLOSSARY.md).
+
+Use the SMART criteria (Specific, Measurable, Achievable, Relevant, Time-bound) where they improve clarity, but do not invent arbitrary metrics or deadlines just to satisfy a template.
 
 ## 9. Ask only for useful missing information
 

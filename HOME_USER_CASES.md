@@ -15,7 +15,7 @@
 | **UC-02** | Shopping & Discounts | Multimodal Photo-to-List (Добавление в список по фото упаковки) | Photo + Voice/Text | Vision/OCR, Shopping, Tasks |
 | **UC-03** | Shopping & Discounts | Pantry Low-Stock Warning (Заканчиваются запасы) | Usage cycle / Extrapolated consumption | Scheduler, Shopping |
 | **UC-04** | Routine & Chores | Floating Cleaning & Maintenance (Циклическая уборка) | Floating interval timer | Scheduler, Tasks |
-| **UC-05** | Routine & Chores | Spontaneous Home Fix (Заметка о мелком ремонте) | Text/Voice observation | Tasks, Projects |
+| **UC-05** | Routine & Chores | Spontaneous Home Fix (Заметка о мелком ремонте) | Text/Voice observation | Tasks, SMART goals |
 | **UC-06** | Domestic Incidents | **Urgent Furniture Cleaning (Собака испачкала диван / Срочная чистка)** | Urgent Voice/Text / Photo | Knowledge Base, Tasks, Delivery/Service |
 | **UC-07** | Appliances & Tech | Appliance Digital Passport (Паспорт бытовой техники) | Photo of nameplate / manual | Documents, Knowledge Base |
 | **UC-08** | Appliances & Tech | Appliance Care Cycles (Декальцинация и смена фильтров) | Usage cycles / Appliance counter | Scheduler, Tasks |

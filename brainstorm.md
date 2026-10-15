@@ -1,6 +1,8 @@
 # Heimdall — Brainstorm
 
-> Living document. This file captures ideas and decisions before we turn them into a formal architecture and implementation plan.
+> **Brainstorm v1 — frozen.** This file preserves the original product thinking, rationale, and examples that led to Heimdall's design. It is historical context, not a source of active rules.
+>
+> The authoritative, actively applied rules live in **[PRINCIPLES.md](./PRINCIPLES.md)**; product requirements and the section-by-section traceability of this file live in **[REQUIREMENTS.md](./REQUIREMENTS.md)**; the development sequence lives in **[PLAN.md](./PLAN.md)** and the current status in **[PROGRESS.md](./PROGRESS.md)**. Section numbers below are kept stable because REQUIREMENTS.md refers to them. Where a section overlaps with a principle, it links to PRINCIPLES.md instead of restating it. New ideas go into dedicated design documents (e.g. [SMART_GOALS.md](./SMART_GOALS.md)), not here.
 
 ## 1. Vision
 
@@ -37,16 +39,16 @@ An agent represents a complete area of responsibility, not a small technical ope
 
 Examples:
 
-- Car agent
+- Car Agent
 - Finance agent
 - Project agent
 - Home agent
-- Shopping agent
-- Documents agent
+
+Shopping and Documents were initially also listed here, but they are capabilities used by many agents rather than standalone domains, so they are reusable modules (see §3 and [PRINCIPLES.md](./PRINCIPLES.md) §5).
 
 Each domain agent owns the end-to-end workflow for its domain and may use multiple shared modules.
 
-Example: a car agent can manage vehicle data, maintenance, expenses, parts, documents, deadlines, purchases, and reminders.
+Example: a Car Agent can manage vehicle data, maintenance, expenses, parts, documents, deadlines, purchases, and reminders.
 
 ## 3. Reusable modules
 
@@ -67,7 +69,7 @@ Initial candidates:
 - External APIs / integrations
 - Persistent memory / structured storage
 
-OCR, for example, is not an agent. It is a capability that can be used by the car agent, finance agent, project agent, and others.
+OCR, for example, is not an agent. It is a capability that can be used by the Car Agent, finance agent, project agent, and others.
 
 ## 4. Agent template / Agent Factory idea
 
@@ -92,7 +94,7 @@ Example request:
 
 > “The brake pads need replacing.”
 
-A capable car agent should eventually be able to:
+A capable Car Agent should eventually be able to:
 
 1. understand which vehicle is involved;
 2. determine urgency and an appropriate deadline;
@@ -251,17 +253,9 @@ A shared event mechanism is worth investigating so modules/agents can react to d
 
 ## 12. Product principles agreed so far
 
-- Proactive by default.
-- 24/7 server-side operation.
-- Domain agents own complete areas of responsibility.
-- Technical capabilities are reusable modules.
-- Agents/modules are predefined and explicitly installed, not created dynamically at runtime.
-- Start with one domain agent and use it to validate the architecture.
-- Car Agent is the first reference implementation.
-- Prefer configuration and shared infrastructure, but allow custom code.
-- Real-world actions need permission boundaries.
-- Critical scheduling/state logic must work independently of the LLM.
-- LLM provider/model must be replaceable.
+The principles agreed during this brainstorm were consolidated into **[PRINCIPLES.md](./PRINCIPLES.md)** (in particular §1–6, §10, §11, §15 and §23).
+
+One nuance that originated here and is described in §4 above: prefer configuration and shared infrastructure for new agents, but allow custom code where domain-specific behavior requires it.
 
 ## 13. Open questions
 
@@ -285,69 +279,28 @@ Before implementation we still need to decide:
 
 ## 14. Next step
 
-Use the Car Agent to define concrete user stories and select one narrow vertical slice for the first MVP. Then derive module contracts and only after that choose the implementation framework and infrastructure.
+Superseded — the current next step is maintained in [PROGRESS.md](./PROGRESS.md).
 
 
-## 15. Security and guardrails — non-negotiable principle
+## 15. Security and guardrails
 
-Security must be treated as a first-class architectural concern in every agent, module, integration, and workflow — especially when Heimdall can perform or prepare real-world actions.
+**Active rules:** [PRINCIPLES.md](./PRINCIPLES.md) §12–17 (security by design, LLM output is not authorization, least privilege, human-in-the-loop, validation before execution, provenance) and §22 (privacy, secrets out of prompts).
 
-Key threat classes to design for:
-
-- direct and indirect prompt injection;
-- malicious instructions embedded in web pages, emails, documents, images, OCR results, tool output, or other untrusted content;
-- phishing and social engineering;
-- unauthorized purchases, payments, subscriptions, bookings, or account changes;
-- malicious or compromised tools/integrations;
-- data exfiltration and leakage between agents/domains;
-- privilege escalation and excessive tool permissions;
-- poisoned or untrusted persistent memory;
-- forged/ambiguous confirmations and identity/session issues.
-
-Core principles:
-
-- Treat all external content as untrusted data, never as authoritative system instructions.
-- LLM output alone must never authorize a sensitive action.
-- Enforce permissions and policy in deterministic code outside the LLM.
-- Use least-privilege access for agents, modules, credentials, and integrations.
-- Separate read/analyze capabilities from write/execute capabilities.
-- Require explicit authorization according to risk for purchases, payments, destructive actions, and other consequential operations.
-- Validate action parameters and targets immediately before execution.
-- Preserve provenance: know where important facts/instructions came from.
-- Keep auditable records of consequential actions and approvals.
-- Isolate secrets from prompts/context wherever possible.
-- Design every new module and agent with a security/threat-model review, not as a later hardening step.
-
-Security and guardrails should therefore be reviewed continuously throughout Heimdall's design and implementation, not postponed until the end.
-
+**Original rationale:** security became non-negotiable because Heimdall is meant to *perform or prepare real-world actions* — purchases, payments, bookings, account changes — rather than only chat. Once an assistant can act, every piece of external content it reads (web pages, emails, documents, OCR output, tool results) becomes a potential attack path, so guardrails cannot be postponed to a later hardening phase. The dedicated threat model is scheduled in [PLAN.md](./PLAN.md), Phase 6.
 
 ## 16. Resource efficiency by design
 
-Heimdall should minimize the resources required to accomplish a task without unnecessarily reducing quality or reliability.
+**Active rule:** [PRINCIPLES.md](./PRINCIPLES.md) §18 (and §21 for event-driven execution).
 
-As a guiding principle, the system should avoid unnecessary use of:
-
-- LLM calls and oversized model context;
-- expensive/high-capability models when a simpler model is sufficient;
-- compute, memory, storage, and network resources;
-- external API calls;
-- continuously running background processes when event-driven or scheduled execution is sufficient;
-- repeated work when safe caching or reuse is possible.
-
-The general rule is: **use the simplest and least resource-intensive mechanism that can reliably perform the task.**
-
-Concrete implementation rules and optimization mechanisms will be defined later as part of the architecture.
-
+**Original rationale:** the goal is to minimize resources *without unnecessarily reducing quality or reliability* — efficiency is a design constraint, not a reason to cut corners. Concrete rules (model tiers, caching, context limits, cost telemetry) are deferred to [PLAN.md](./PLAN.md), Phase 7.
 
 ## 17. Notes must become actionable or intentionally archived
 
-Incoming information should not silently disappear into an unstructured notes pile.
+**Active rules:** [PRINCIPLES.md](./PRINCIPLES.md) §8 (actionable information lifecycle) and §9 (ask only for useful missing information).
 
-When the user records an observation, problem, idea, or intention, Heimdall should determine what kind of managed object it represents and move it into an appropriate lifecycle.
+**Original thinking:** for actionable observations, the default direction is a **project / outcome-oriented work item** with a clearly defined desired result, rather than a passive note. This applies across domains — Car, Home, Finance, Projects, and future agents.
 
-For actionable observations, the default direction is to turn them into a **project / outcome-oriented work item** with a clearly defined desired result rather than leaving them as passive notes.
-
-Example:
+### Worked example
 
 > “The wheel is squeaking.”
 
@@ -364,7 +317,7 @@ The Car Agent should not merely save this sentence. It should:
 
 ### SMART-style outcome definition
 
-Where appropriate, Heimdall should help turn vague intentions and observations into sufficiently concrete outcomes using SMART-style criteria:
+The SMART criteria as they were understood here, as a clarification aid:
 
 - **Specific** — what exactly should be achieved;
 - **Measurable** — how completion can be verified;
@@ -372,28 +325,14 @@ Where appropriate, Heimdall should help turn vague intentions and observations i
 - **Relevant** — why it matters / which domain or larger goal it belongs to;
 - **Time-bound** — deadline or review point when one is meaningful.
 
-SMART is a tool for clarification, not a rigid requirement to invent arbitrary deadlines or metrics. Heimdall should ask for or infer only information that is actually useful.
-
-Not every note must become a project. Pure reference information, ideas without current action intent, records, or journal-like notes may remain informational — but that should be an intentional classification rather than an accidental dead end.
-
-This principle is cross-domain and should apply to Car, Home, Finance, Projects, and future agents.
-
+Examples of material that may intentionally stay informational: pure reference information, ideas without current action intent, records, and journal-like notes.
 
 ## 18. Norse mythology naming convention
 
-**Heimdall** is the name of the central orchestrator / guardian of the system, not necessarily the name of every individual component.
+**Active rule:** [PRINCIPLES.md](./PRINCIPLES.md) §24.
 
-Agents, major modules, services, and other meaningful subsystems may use names from Norse mythology when the mythological role maps naturally to the technical responsibility.
+**Original thinking:** the convention should communicate architecture and personality rather than decorate. In practice that means:
 
-The naming convention should help communicate architecture and personality rather than become decoration. A mythological name should therefore have a clear reason behind it.
-
-Guidelines:
-
-- Heimdall = orchestrator / watcher / guardian coordinating the system;
-- prefer Norse names for major concepts where there is a meaningful semantic match;
-- keep ordinary descriptive technical names where clarity is more important;
-- do not force a mythology name onto every class, API, table, or utility;
-- document the meaning of each chosen mythological name and why it fits the component;
-- when designing new agents/modules, actively consider and propose suitable Norse names.
-
-Potential names should be selected later together with the actual responsibilities of each component, rather than assigning names before the architecture is understood.
+- do not force a mythological name onto every class, API, table, or utility;
+- when designing new agents/modules, actively consider and propose suitable Norse names;
+- choose names together with each component's actual responsibilities, not before the architecture is understood.

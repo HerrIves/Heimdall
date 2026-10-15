@@ -25,7 +25,7 @@
 
 **REQ-I01 · Agreed.** Different channels reach the **same** Heimdall backend, domain data, workflows, permissions, and state. Presentation or transport adapters must not duplicate business logic.
 
-**REQ-I02 · Agreed.** A dedicated app is the intended full-featured client: capture text, photos, files, and voice; inspect agents, tasks, projects, status, notifications, and settings/approvals. Whether it will be native, PWA, or another technology is **open**.
+**REQ-I02 · Agreed.** A dedicated app is the intended full-featured client: capture text, photos, files, and voice; inspect agents, tasks, SMART goals, status, notifications, and settings/approvals. Whether it will be native, PWA, or another technology is **open**.
 
 **REQ-I03 · Agreed.** Telegram is an optional channel that can support quick messages, voice, photos/files, commands, notifications, and relevant interactions. Its exact feature parity with the app is **open**; it must never be required to use the product.
 
@@ -37,13 +37,13 @@
 
 **REQ-A01 · Agreed.** The Heimdall orchestrator interprets incoming requests and events, selects **existing** domain agents, coordinates delegated work, and presents results.
 
-**REQ-A02 · Agreed.** Domain agents own a whole life/business domain and its end-to-end workflows (not one technical primitive). Candidate domains: Vehicle, Finance, Project, Home, Shopping, Documents. **Only the Vehicle agent has been chosen as the first reference agent.** The others are possibilities, not a development commitment.
+**REQ-A02 · Agreed.** Domain agents own a whole life/business domain and its end-to-end workflows (not one technical primitive). Candidate domains: Vehicle, Finance, Project, Home. Shopping and Documents are **reusable modules** (REQ-A05), not domain agents: they are capabilities used by many agents (PRINCIPLES §5). **Only the Vehicle agent has been chosen as the first reference agent.** The others are possibilities, not a development commitment.
 
 **REQ-A03 · Agreed.** Agents/modules are deliberately built, tested, reviewed, configured, and shipped by developers. The orchestrator must **not generate production agents or modules at runtime**.
 
 **REQ-A04 · Agreed.** Use a shared agent runtime/template plus shared capability modules; add domain-specific code when necessary. The agent “factory” is a **development-time reuse concept**, not dynamic autonomous agent creation.
 
-**REQ-A05 · Candidate module inventory.** Tasks/project tracking, scheduling/calendar, notifications, budget/expenses, payment preparation, documents/file processing, OCR/image understanding, search/research, shopping/price checks, API connectors, persistence/memory. Exact boundaries and contracts remain **open**.
+**REQ-A05 · Candidate module inventory.** Tasks / SMART goal tracking, scheduling/calendar, notifications, budget/expenses, payment preparation, documents/file processing, OCR/image understanding, search/research, shopping/price checks, API connectors, persistence/memory. Exact boundaries and contracts remain **open**.
 
 **REQ-A06 · Open.** Agents may need cross-domain information and events. Define ownership and synchronization without duplicate conflicting sources of truth (e.g., a vehicle expense visible in global finances). Decide event-bus vs direct/workflow communication during architecture design.
 
@@ -59,13 +59,19 @@
 
 **REQ-L05 · Agreed.** Track each managed item until completion, explicit cancellation, or another intentional terminal state; allow updates, reassessment, reminders, and corrections.
 
+**REQ-L07 · Agreed.** Every input receives a deliberate classification — **reference** or **SMART goal**. An input left hanging as a passive, undecided note is not allowed. Purely informational data (VIN, document photo, note to remember) intentionally stays a reference. Applies to all domains. See PRINCIPLES §8 and [GLOSSARY.md](./GLOSSARY.md).
+
+**REQ-L08 · Candidate.** SMART goal lifecycle with deterministic regular review: states active ⇄ waiting → achieved / cancelled / someday-maybe / goal graveyard (archived, never deleted, revivable). Review frequency follows the Eisenhower quadrant and whether a deadline exists; the agent proposes the quadrant, the user confirms it. After N postponements Heimdall offers to move a goal to the graveyard. Details: [SMART_GOALS.md](./SMART_GOALS.md) Part 1.
+
+**REQ-L09 · Candidate.** Execution contexts: SMART goals and tasks carry a context (place, available free time, tools). The user announces a context ("I'm at my desk", "in the shop, 20 minutes free") and receives what is doable there and now. Context comes from voice/text, geolocation, or NFC tags; an NFC touch is one "I'm here" event consumed by several subscribers. Details: [SMART_GOALS.md](./SMART_GOALS.md) Part 2.
+
 **REQ-L06 · Candidate acceptance scenario.** The user says “A wheel squeaks.” The Vehicle agent identifies which car and wheel as far as possible, asks meaningful follow-ups, opens a managed investigation/repair work item, records next steps, and tracks the outcome. This is *not* an automatic diagnosis or permission to purchase parts.
 
 ## 5. Proactive behavior and workflows
 
 **REQ-P01 · Agreed.** Heimdall can react to persisted dates, tasks, state changes, and external information without the user reopening a client.
 
-**REQ-P02 · Candidate triggers.** Approaching TÜV or service, missed repair task, overspent car budget, lowered part price, invoice due date, incomplete project.
+**REQ-P02 · Candidate triggers.** Approaching TÜV or service, missed repair task, overspent car budget, lowered part price, invoice due date, stalled SMART goal.
 
 **REQ-P03 · Agreed.** Notifications should be relevant and actionable, with a controlled frequency; support follow-ups and status updates, not just initial alerts.
 
@@ -111,7 +117,7 @@
 
 ## 9. Documentation and naming conventions
 
-**REQ-D01 · Agreed.** `brainstorm.md` preserves original thinking; `PRINCIPLES.md` is the recurring design checklist; `REQUIREMENTS.md` is the behavior/scope baseline; `PLAN.md` is the sequence of delivery; `README.md` is the navigation and current status.
+**REQ-D01 · Agreed.** `brainstorm.md` preserves original thinking (Brainstorm v1, frozen); `GLOSSARY.md` defines shared terms; `SMART_GOALS.md` holds draft ideas on the SMART goal lifecycle and execution contexts; `PRINCIPLES.md` is the recurring design checklist; `REQUIREMENTS.md` is the behavior/scope baseline; `PLAN.md` is the sequence of delivery; `README.md` is the navigation and current status.
 
 **REQ-D02 · Agreed.** Architectural choices, security threat model and shared module contracts will live in dedicated documents when those stages start. The initial vehicle-agent specification and scenario review **already exist** in [CAR_AGENT.md](./CAR_AGENT.md), [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), and [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md). Engineering quality guidance is in [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md). These documents are not evidence of implemented functionality.
 
@@ -139,7 +145,7 @@ The table below maps **all 18 sections of the existing brainstorm**, including i
 | 14. Next step | REQ-C07; Plan phases 2–3 | Next action |
 | 15. Security and guardrails | REQ-S01–S04; Principles 12–17, 22; Plan phase 6 + all reviews | Agreed mandatory |
 | 16. Resource efficiency | REQ-N02–N04; Principle 18; Plan phase 7 + all reviews | Agreed mandatory |
-| 17. Notes → projects/SMART | REQ-L01–L06; Principles 8–9; Plan phases 2–3 | Agreed principle; behavior to detail |
+| 17. Notes → SMART goals | REQ-L01–L09; Principles 8–9; [SMART_GOALS.md](./SMART_GOALS.md); Plan phases 2–3 | Classification rule agreed; lifecycle/review/contexts candidate |
 | 18. Norse naming | REQ-V04, D03; Principle 24 | Agreed convention; first agent Hrimfaxi named |
 
 ## 11. Outstanding product decisions (not silently closed)

@@ -4,7 +4,8 @@
 
 ## Documentation ownership and review gates
 
-- [brainstorm.md](./brainstorm.md) — original ideas and exploration, preserved for history.
+- [brainstorm.md](./brainstorm.md) — original ideas and exploration; Brainstorm v1, frozen.
+- [GLOSSARY.md](./GLOSSARY.md) — shared vocabulary (SMART goal, reference, task, agent, module, event).
 - [REQUIREMENTS.md](./REQUIREMENTS.md) — product behavior, candidate scope, open decisions, and traceability back to every brainstorm section.
 - [PRINCIPLES.md](./PRINCIPLES.md) — binding cross-cutting design principles and component checklist.
 - [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md) — pragmatic SOLID/KISS/DRY/YAGNI guidance, quality gates and standards-gap assessment.
@@ -28,24 +29,21 @@
 
 ---
 
-## Phase 1 — Close Brainstorm v1
+## Phase 1 — Close Brainstorm v1 ✅
 
-Treat `brainstorm.md` as the source of product ideas and principles.
+`brainstorm.md` is the origin of Heimdall's product ideas. Its agreed content has been consolidated into dedicated documents, and Brainstorm v1 is now frozen as historical context.
 
-Before freezing Brainstorm v1, make sure it captures:
+The topics this phase required to be captured are covered as follows:
 
-- multi-channel interaction;
-- mobile application as a full client;
-- Telegram as an optional interaction channel;
-- one backend / one Heimdall behind all channels;
-- proactive behavior and triggers;
-- human-in-the-loop and authorization boundaries;
-- security / guardrails;
-- resource efficiency.
+- multi-channel interaction, mobile app, Telegram, one backend behind all channels → [PRINCIPLES.md](./PRINCIPLES.md) §2–3 and REQ-I01–I04 in [REQUIREMENTS.md](./REQUIREMENTS.md); client details in Phase 12 below;
+- proactive behavior and triggers → PRINCIPLES §1, §21; REQ-P01–P05;
+- human-in-the-loop and authorization boundaries → PRINCIPLES §13, §15; REQ-S01–S03;
+- security / guardrails → PRINCIPLES §12–17; REQ-S04;
+- resource efficiency → PRINCIPLES §18; REQ-N02.
 
-After this point, new implementation details should primarily go into dedicated design documents rather than expanding the brainstorm indefinitely.
+New ideas and implementation details go into dedicated design documents, not into the brainstorm.
 
-**Result:** `brainstorm.md` — Brainstorm v1 complete.
+**Result:** `brainstorm.md` — Brainstorm v1 complete and frozen.
 
 ---
 
@@ -112,7 +110,7 @@ Define:
 
 **Guardrail gate:** review [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md), resolve critical unsafe assumptions and record Build vs Reuse decisions; a specification review is not a runtime test.
 
-**Gate:** demonstrate the entire capture → classification → action/project → tracking lifecycle when relevant, including errors, human approvals, retries and notification behavior; record the acceptance tests.
+**Gate:** demonstrate the entire capture → classification → reference / SMART goal → tracking lifecycle when relevant, including errors, human approvals, retries and notification behavior; record the acceptance tests.
 
 **Result:** first implementable Heimdall workflow.
 
@@ -132,6 +130,7 @@ Likely modules:
 - Budget / expenses;
 - Search / research;
 - Shopping;
+- Context provider (place and available time from voice, geolocation, NFC — candidate, see [SMART_GOALS.md](./SMART_GOALS.md));
 - Payments;
 - persistent storage / memory;
 - integrations.
@@ -255,7 +254,7 @@ Evaluate candidates against Heimdall's actual requirements rather than choosing 
 
 ## Phase 9 — Repository and engineering foundation
 
-Create the initial project structure.
+Create the initial repository structure.
 
 Set up:
 

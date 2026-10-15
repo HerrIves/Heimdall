@@ -14,14 +14,16 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 
 1. **[PROGRESS.md](./PROGRESS.md)** — current stage, completed work, blockers, and the exact next action. Read this first when continuing work.
 2. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
-3. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
-4. **[ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md)** — SOLID, KISS, DRY, YAGNI, quality gates and review against engineering/security references.
-5. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
-6. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
-7. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
-8. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
-9. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; preserved for historical context.
-10. **README.md** — this document: repository introduction and documentation map.
+3. **[GLOSSARY.md](./GLOSSARY.md)** — shared vocabulary: note, reference, SMART goal, task, agent, module, event, and the different meanings of "project".
+4. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
+5. **[ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md)** — SOLID, KISS, DRY, YAGNI, quality gates and review against engineering/security references.
+6. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
+7. **[SMART_GOALS.md](./SMART_GOALS.md)** — draft ideas: SMART goal lifecycle, review by the Eisenhower matrix, goal graveyard, execution contexts (voice, geolocation, NFC).
+8. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
+9. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
+10. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
+11. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; Brainstorm v1, frozen, preserved for historical context.
+12. **README.md** — this document: repository introduction and documentation map.
 
 The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
 
@@ -31,7 +33,7 @@ The design must trace product requirements back to the brainstorm, but avoid dup
 - Domain agents own end-to-end workflows and domain knowledge.
 - Shared modules provide reusable capabilities such as tasks, scheduling, documents/OCR, budgets, notifications, and approvals.
 - Multiple interfaces can use the same backend: a dedicated app, Telegram, voice, and potentially other channels.
-- Notes and observations should not simply disappear into storage. Heimdall determines whether something is reference information or requires managed action, requests missing information when needed, and drives actionable items toward a clear outcome.
+- Notes and observations should not simply disappear into storage. Every input is deliberately classified as either reference information or a **SMART goal**; nothing is left hanging unclassified. For SMART goals, Heimdall requests missing information when needed and drives them toward a clear result.
 - Proactivity is a core capability: relevant events can be monitored and surfaced without waiting for an explicit request.
 
 ## Non-negotiable constraints
@@ -50,9 +52,9 @@ The authoritative checklist lives in **[PRINCIPLES.md](./PRINCIPLES.md)**. Key c
 
 The first concrete domain is vehicle ownership and maintenance. The domain agent is named **Hrimfaxi** (Hrímfaxi); see [CAR_AGENT.md](./CAR_AGENT.md) and [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md). These are design documents, not implemented code.
 
-Expected areas include vehicle details and history, maintenance and repairs, expenses and budgets, parts and purchases, documents, deadlines, recurring obligations, and observations that can become actionable projects.
+Expected areas include vehicle details and history, maintenance and repairs, expenses and budgets, parts and purchases, documents, deadlines, recurring obligations, and observations that can become SMART goals.
 
-Example: a note such as **"the wheel squeaks"** should not remain an isolated note. The agent should determine what information is missing, clarify the desired outcome, create a manageable project or task when appropriate, and help drive it to completion.
+Example: a note such as **"the wheel squeaks"** should not remain an isolated note. The agent should determine what information is missing, clarify the desired outcome, turn it into a SMART goal with tasks when appropriate, and help drive it to completion.
 
 ## Naming convention
 
@@ -67,6 +69,8 @@ To avoid documents overlapping:
 - current position, completed work, next concrete action → **PROGRESS.md**
 - product behavior, scope, candidates, open decisions, traceability → **REQUIREMENTS.md**
 - stable cross-cutting rules → **PRINCIPLES.md**
+- shared terminology → **GLOSSARY.md**
+- draft ideas on SMART goal lifecycle, review and execution contexts → **SMART_GOALS.md**
 - how to apply code-quality practices, testing/CI expectations, standards-gap assessment → **ENGINEERING_STANDARDS.md**
 - development sequence and milestones → **PLAN.md**
 - exploratory ideas and historical reasoning → **brainstorm.md**
