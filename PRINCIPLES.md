@@ -274,7 +274,8 @@ Use established security verification practices as references for design, develo
 
 - Run automated PR checks to identify suspicious changes, report file/line and actionable mitigation, and fail on clear blocking risks.
 - Require a security-impact narrative, threat boundaries, authorization behavior and test evidence; blank checklists do not constitute verification.
-- Combine static/dependency/secrets checks with **runtime adversarial tests**, especially prompt injection and excessive agency. Treat checker and AI reviewer output as imperfect signals, not proof.
+- Combine static/dependency/secrets checks with **runtime adversarial tests**, especially prompt injection, tool spoofing/substitution and permission/approval bypass. Treat checker and AI reviewer output as imperfect signals, not proof.
+- **Milestone commitment:** define adversarial scenarios in the architecture/threat model (Phases 5–6); implement automated runtime guardrail and abuse tests alongside the first executable agent/tool boundary (Phases 9–10), and run them as a CI gate for relevant changes. Do not ship a tool-using agent without successful negative tests of deterministic authorization and forbidden side effects. See [SECURITY_REVIEW.md](./SECURITY_REVIEW.md).
 - Enforce merge restrictions through a **GitHub Ruleset with required checks and independent review where available**, not through local hooks or unprotected documents.
 - Use least-privilege CI credentials; do not run untrusted PR code under `pull_request_target` with elevated access. Protect security-workflow changes against unauthorized bypass.
 - Keep actual security decisions and side-effect permissions in deterministic runtime code outside the LLM; report and track identified vulnerabilities and risk acceptances.
