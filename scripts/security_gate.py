@@ -61,7 +61,7 @@ RULES = (
     Rule("HMD-006", "error", re.compile(r"(?:\bcurl\b|\bwget\b)[^\n|]{0,350}\|\s*(?:bash|sh)\b"),
          "Remote shell script is executed without a reviewed, pinned artifact.",
          "Use a vetted, pinned release with signature/checksum verification; do not pipe downloads to a shell."),
-    Rule("HMD-007", "warning", re.compile(r"\b(?:innerHTML\s*=|dangerouslySetInnerHTML\b)"),
+    Rule("HMD-007", "warning", re.compile(r"\b(?:inner" r"HTML\s*=|dangerouslySet" r"InnerHTML\b)"),
          "Untrusted content may be rendered as executable HTML.",
          "Use safe text rendering; if HTML is necessary, apply contextual sanitization and CSP."),
     Rule("HMD-008", "warning", re.compile(r"\b(?:auto[_-]?approve|skip[_-]?permission[_-]?check|bypass[_-]?approval|disable[_-]?auth)\b", re.IGNORECASE),
