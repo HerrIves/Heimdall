@@ -175,6 +175,8 @@ Specify:
 
 Resolve cross-domain ownership, especially questions such as how a Car Agent expense contributes to the future global Finance domain without duplicated state.
 
+**Runtime security test planning:** identify executable model-to-tool trust boundaries and design threat-driven test fixtures covering prompt injection, tampered/spoofed tool responses, forged approvals, cross-agent data access and unauthorized side effects. Record expected deterministic denial and observable evidence. The tests are planned here, not claimed executed.
+
 **Gate:** document the decision status (accepted vs candidate), component trust boundaries, cross-domain data ownership and multi-channel consistency; audit against PRINCIPLES.md.
 
 **Result:** Heimdall architecture v1.
@@ -203,6 +205,8 @@ Cover at minimum:
 Define deterministic policy enforcement outside the LLM.
 
 Classify operations by risk and specify which can run automatically and which require confirmation.
+
+**Test specification gate:** enumerate negative/adversarial scenarios and acceptance criteria for each enabled tool, permission scope, model gateway and untrusted input. Define which failures block release. See [SECURITY_REVIEW.md](./SECURITY_REVIEW.md). 
 
 **Result:** security model and permission system.
 
@@ -273,6 +277,8 @@ Set up:
 
 **Security PR gate:** before merging into protected `main`, require `security-gate` in the GitHub Ruleset and review whether code scanning, dependency checks, provenance and prompt-injection runtime tests apply. The workflow alone does not create an enforceable branch rule.
 
+**Executable-agent security harness:** when model-to-tool interfaces become runnable, wire deterministic adversarial fixtures, mocked/sandboxed tool handlers and policy-denial assertions into CI. Do not defer these tests until all agents have been implemented. A PR adding an executable agent/tool boundary must include the tests for its threats.
+
 **Engineering gate:** CI must run formatting/lint, static types, builds, focused tests and suitable dependency/secrets checks once code exists. Define reproducible dependency versions, code review criteria and documented release/migration procedures. Do not mark checks implemented before they execute successfully.
 
 **Result:** runnable Heimdall skeleton.
@@ -296,6 +302,8 @@ The goal is not a demo with mocked architecture, but a small real system that va
 - failure handling.
 
 **Engineering gate:** trace UC/requirements to executed unit, contract, integration, adversarial and selected end-to-end tests. Validate API/event compatibility, state invariants, retries/idempotency, observability and recovery, following [ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md).
+
+**Mandatory LLM security release gate:** exercise the runnable agent against hostile prompts/documents/retrieval/tool results, tool impersonation, forged user approvals, cross-agent data leakage and unauthorized external actions. Verify *actual* blocked tool calls and absent side effects, not only that the model says "no". Relevant tests must run and pass in required CI checks before the first agent is considered complete or deployable. No production secrets or payments in test environments.
 
 **Result:** first working Heimdall workflow.
 
