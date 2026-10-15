@@ -13,6 +13,8 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 ## Start here
 
 1. **[PROGRESS.md](./PROGRESS.md)** — current stage, completed work, blockers, and the exact next action. Read this first when continuing work.
+   - **[TODO.md](./TODO.md)** — open tasks / backlog, ordered by importance.
+   - **[AGENTS.md](./AGENTS.md)** — rules for coding assistants and contributors working on this repository.
 2. **[REQUIREMENTS.md](./REQUIREMENTS.md)** — product behaviors, scoped/candidate ideas, open decisions and mapping of all 18 brainstorm sections.
 3. **[GLOSSARY.md](./GLOSSARY.md)** — shared vocabulary: note, reference, SMART goal, task, agent, module, event, and the different meanings of "project".
 4. **[PRINCIPLES.md](./PRINCIPLES.md)** — mandatory rules and the component-review checklist.
@@ -26,7 +28,7 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 11. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; Brainstorm v1, frozen, preserved for historical context.
 12. **README.md** — this document: repository introduction and documentation map.
 
-The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. A root-level `AGENTS.md` does **not** yet exist; if created later, it should contain instructions for repository coding assistants, not repeat the product requirements or list speculative agents as implemented.
+The design must trace product requirements back to the brainstorm, but avoid duplicating them in the plan or README. [AGENTS.md](./AGENTS.md) contains instructions for repository coding assistants; it does not repeat the product requirements or list speculative agents as implemented.
 
 ## Core concept
 
@@ -69,6 +71,8 @@ Agents, modules, and major services may use names inspired by Norse mythology wh
 To avoid documents overlapping:
 
 - current position, completed work, next concrete action → **PROGRESS.md**
+- open tasks / backlog → **TODO.md**
+- rules for coding assistants and contributors → **AGENTS.md**
 - product behavior, scope, candidates, open decisions, traceability → **REQUIREMENTS.md**
 - stable cross-cutting rules → **PRINCIPLES.md**
 - shared terminology → **GLOSSARY.md**
