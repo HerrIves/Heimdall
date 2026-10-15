@@ -1,15 +1,29 @@
-# Heimdall — SMART Goals: Lifecycle, Review and Contexts
+# Heimdall — SMART Goals: Lifecycle, Review, Contexts and Load
 
 > **Status: draft product ideas.** This document collects ideas for how SMART goals live, get reviewed, and find the right moment to be done. These are directions for development, not final principles. Active rules stay in [PRINCIPLES.md](./PRINCIPLES.md); terms are defined in [GLOSSARY.md](./GLOSSARY.md).
 >
 > It extends [PRINCIPLES.md](./PRINCIPLES.md) §8 and REQ-L07–L09 in [REQUIREMENTS.md](./REQUIREMENTS.md): every input is classified as a reference or a SMART goal. This document describes what happens to a SMART goal after that.
 
-A SMART goal has two independent axes:
+A SMART goal (and each of its tasks) has three independent axes:
 
 | Axis | Question it answers | Examples |
 |---|---|---|
-| **Time** | *When* should it be done, and how much does it matter? | deadline, urgency, importance, review frequency |
+| **Time** | *When* should it be done, and how much does it matter? | deadline, slot, urgency, importance, review frequency |
 | **Context** | *Where and under which conditions* can it be done at all? | place, available free time, tools needed |
+| **Energy** | *How much effort* does it take, and of which kind? | duration; energy index: high focus / routine / physical trip (Part 3) |
+
+### Time formula (the "T" in SMART)
+
+Not every task needs a calendar slot. "Buy milk" is not done "on Tuesday at 19:00" but "on the next trip to the shop". Therefore:
+
+```
+T  =  hard deadline  +  ( scheduled slot   OR   place context )
+                          "Fri 23.10, 18:30"     "in the shop", "at my desk"
+```
+
+- **Hard deadline** — the latest date by which it must be done (may be absent).
+- **Scheduled slot** — concrete time in the calendar, proposed by the Slot planner and confirmed by the user.
+- **Place context** — the task is offered when the user is in the right context (Part 2) instead of at a fixed time.
 
 ---
 
@@ -132,6 +146,36 @@ A reusable **context provider** module is emerging: it collects signals about pl
 
 ---
 
+## Part 3 — Energy and load
+
+### 10. Energy index as a third axis
+
+Besides *when* and *where*, a task has a **duration** and an **energy index** (RU: *индекс энергии*):
+
+| Energy index | RU | Examples |
+|---|---|---|
+| 🧠 **High focus** | Высокий фокус | report, tax return, comparing offers |
+| 🔁 **Routine** | Рутина | paying bills, short calls, forms |
+| 🚗 **Physical trip** | Физический выезд | post office, garage, shop |
+
+**Purpose:**
+
+- do not schedule several heavy (high-focus) tasks in a row, e.g. after a working day;
+- do not overload a day or a weekend;
+- combine with contexts: routine tasks go into an admin hour, trips are grouped by route.
+
+### 11. Load rule — the attention budget
+
+**No more than 80% of the user's free time is filled with planned tasks.** When a new task would exceed this, the Slot planner does not add it silently; it shows the load and asks what to move:
+
+> "Saturday already has 5 hours of focused work and 2 trips. If we add this, a deadline will slip. What shall we move to Tuesday?"
+
+This closes the open gap **"attention budget"**. The 80% value is a starting point, not a fixed rule.
+
+**Origin:** the secretary scenario SEC-UC-10 "Resource & Energy Guard" ([SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md)). It builds on David Allen's GTD practice of choosing the next action not only by context and available time, but also by available energy.
+
+---
+
 ## Related scenarios
 
 These ideas already appear in the agent scenario catalogs:
@@ -142,6 +186,8 @@ These ideas already appear in the agent scenario catalogs:
 | Postponing without losing the goal; next interval counted from actual completion | Frigg UC-04 floating cleaning intervals |
 | Follow-up until verified completion | Hrimfaxi UC-01, UC-06; [CAR_AGENT.md](./CAR_AGENT.md) §3 |
 | Context of place and available time | Frigg UC-10 family coordination (location context); shopping lists in Frigg UC-01–UC-02 |
+| Slots, admin hour, rescheduling, weekly review, waiting-for, briefing | Fulla SEC-UC-03–07, 09, 11, 12 ([SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md)) |
+| Energy index and load rule | Fulla SEC-UC-10 |
 
 ---
 
@@ -151,4 +197,6 @@ These ideas already appear in the agent scenario catalogs:
 - How strong should escalation be for long-postponed goals, and where does it stop being helpful?
 - Exact values: the threshold **N**, and the review frequencies per quadrant.
 - How tasks inherit context from their SMART goal, and whether context belongs to the goal or to each task.
+- Who sets the energy index and duration: proposed by the agent and confirmed by the user, or learned from completed tasks?
+- Is 80% the right load threshold, and should it differ between weekdays and weekends?
 - Security and privacy of context signals: location and NFC events reveal where the user is ([PRINCIPLES.md](./PRINCIPLES.md) §12, §22).
