@@ -1,6 +1,6 @@
 # Hrimfaxi — Scenario Compliance & Guardrail Review
 
-> Review date: 2026-10-14. Scope: all ten scenarios in [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), reviewed against [CAR_AGENT.md](./CAR_AGENT.md), [REQUIREMENTS.md](./REQUIREMENTS.md), and [PRINCIPLES.md](./PRINCIPLES.md). **This is design/static scenario analysis, not execution of code or automated tests.** No scenario is yet implementation-ready.
+> Review date: 2026-10-14. Scope: all ten scenarios in [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), reviewed against [CAR_AGENT.md](./CAR_AGENT.md), [REQUIREMENTS.md](./REQUIREMENTS.md), and [PRINCIPLES.md](./PRINCIPLES.md). **This is design/static scenario analysis, not execution of code or automated tests.** No scenario is yet implementation-ready. A separate check of the same cases against the shared stage flow (GTD, SMART, Eisenhower) is in [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md).
 
 ## Status rubric
 

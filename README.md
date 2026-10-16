@@ -25,6 +25,9 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 8. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
 9. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
 10. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
+    - **[HOME_USER_CASES.md](./HOME_USER_CASES.md)** — scenario catalog of the home agent candidate **Frigg** (11 cases).
+    - **[SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md)** — scenario catalog of the personal-administration agent **Fulla** (in Russian).
+    - **[FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md)** — all 33 scenarios run through the stage flow (GTD, SMART, Eisenhower): what passes, eight flow changes, proposed flow v2.
 11. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; Brainstorm v1, frozen, preserved for historical context.
 12. **README.md** — this document: repository introduction and documentation map.
 
@@ -83,5 +86,7 @@ To avoid documents overlapping:
 - repository orientation and documentation links → **README.md**
 - first agent specification and proposed scenarios → **CAR_AGENT.md**, **HRIMFAXI_USER_CASES.md**
 - Hrimfaxi scenario audit and blockers → **HRIMFAXI_CASE_REVIEW.md**
+- other agents' scenarios → **HOME_USER_CASES.md** (Frigg), **SECRETARY_USER_CASES.md** (Fulla)
+- check of all scenarios against the stage flow, proposed flow changes → **FLOW_CASE_REVIEW.md**
 
 README should point to the source of truth instead of duplicating its details.

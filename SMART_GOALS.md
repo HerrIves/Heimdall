@@ -201,6 +201,8 @@ These ideas already appear in the agent scenario catalogs:
 | Slots, admin hour, rescheduling, weekly review, waiting-for, briefing | Fulla SEC-UC-03–07, 09, 11, 12 ([SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md)) |
 | Energy index and load rule | Fulla SEC-UC-10 |
 
+All 33 scenarios were run through the stage flow built on this document (capture → clarify → formulate → prioritize → engage → review): [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md). Several open questions below are answered there as proposals (C6 lifecycle-status owner, C8 provisional quadrant, C5 return to formulation).
+
 ---
 
 ## Open questions

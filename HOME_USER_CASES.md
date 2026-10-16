@@ -2,7 +2,7 @@
 
 > **Status:** Working catalog of user scenarios for Heimdall's household and domestic domain agent.  
 > **Candidate Identity:** **Frigg** (Фригг) — queen of Asgard, guardian of the domestic hearth, household order, and foresight.  
-> **Reference:** [REQUIREMENTS.md](./REQUIREMENTS.md), [PROGRESS.md](./PROGRESS.md), [PRINCIPLES.md](./PRINCIPLES.md).  
+> **Reference:** [REQUIREMENTS.md](./REQUIREMENTS.md), [PROGRESS.md](./PROGRESS.md), [PRINCIPLES.md](./PRINCIPLES.md). Stage-flow check of all cases: [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md).  
 > **Core Principle:** Household routine shouldn't consume mental energy. The agent proactively monitors supplies, catalogues, routine chores, and home appliances, surfacing actionable opportunities (like staple discounts) and managing tasks without spamming the user.
 
 ---
