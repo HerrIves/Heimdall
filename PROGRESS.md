@@ -65,7 +65,7 @@
 - [x] Влит [PR #4](https://github.com/HerrIves/Heimdall/pull/4): PR security gate, политика угроз, принцип 31, PR-шаблон и 10 unit-тестов сканера.
 - [x] Влит [PR #5](https://github.com/HerrIves/Heimdall/pull/5): синхронизация PROGRESS с PR #2–#4.
 - [x] Влит [PR #6](https://github.com/HerrIves/Heimdall/pull/6): добавлены [TODO.md](./TODO.md) (backlog) и [AGENTS.md](./AGENTS.md) (инструкции для contributors и coding agents).
-- [ ] *(на ревью, PR от 2026-10-16)* Создан [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md): все 33 сценария (Hrimfaxi, Frigg, Fulla) прогнаны через схему из 6 этапов (GTD, SMART, Эйзенхауэр) и 5 правил. Итог: 11 проходят, 21 — после правок схемы, 1 не проходит (Frigg UC-10, семья). Предложено 8 правок и схема v2. Правка C2 («ввод раскладывается на части, каждая часть — справка или SMART-цель») внесена в PRINCIPLES §8, GLOSSARY и REQ-L07; остальные — задачи в [TODO.md](./TODO.md).
+- [ ] *(на ревью, [PR #8](https://github.com/HerrIves/Heimdall/pull/8))* Создан [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md): все 33 сценария (Hrimfaxi, Frigg, Fulla) прогнаны через схему из 6 этапов (GTD, SMART, Эйзенхауэр) и 5 правил. Итог: 11 проходят, 21 — после правок схемы, 1 не проходит (Frigg UC-10, семья). Предложено 8 правок и схема v2. Правка C2 («ввод раскладывается на части, каждая часть — справка или SMART-цель») внесена в PRINCIPLES §8, GLOSSARY и REQ-L07; остальные — задачи в [TODO.md](./TODO.md).
 
 ## Запланированные runtime-тесты безопасности LLM-агентов (обязательное требование)
 
