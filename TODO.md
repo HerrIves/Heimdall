@@ -44,6 +44,7 @@
   - [ ] C7 — **one obligation, one object**: routing and deduplication when a contract or invoice touches two agents (Hrimfaxi UC-03/05, Frigg UC-09, Fulla SEC-UC-01/08).
   - [ ] C8 — **provisional quadrant on arrival**, confirmed at review; for dangerous subsystems the safety rule sets it. Implement together with the 🔴 "Safety rule before the priority quadrant" task.
 - [ ] **Habit scenarios:** write 2–3 habit use cases (habit loop, small-change systems) so the habits track can be checked against the flow; today no catalog covers habits.
+- [ ] **Long-term goal scenarios (depth level 3):** write 2–3 cases (e.g. a savings goal, a renovation, learning a language) so WOOP, lead / lag measures, key results and areas of focus in [SMART_GOALS.md](./SMART_GOALS.md) Part 4 can be checked; no current scenario is level 3 ([FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md) §7).
 - [ ] **Eisenhower bottom row:** define review rhythm for "not important" quadrants in [SMART_GOALS.md](./SMART_GOALS.md) §3.
 
 ## ⚪ Minor

@@ -21,13 +21,13 @@ Heimdall is the central orchestrator: one brain, multiple channels and specializ
 5. **[ENGINEERING_STANDARDS.md](./ENGINEERING_STANDARDS.md)** — SOLID, KISS, DRY, YAGNI, quality gates and review against engineering/security references.
 6. **[PLAN.md](./PLAN.md)** — the full roadmap, milestones and review gates.
    - **[SECURITY_REVIEW.md](./SECURITY_REVIEW.md)** — mandatory PR security process, threat model and GitHub Ruleset setup.
-7. **[SMART_GOALS.md](./SMART_GOALS.md)** — draft ideas: SMART goal lifecycle, review by the Eisenhower matrix, goal graveyard, execution contexts (voice, geolocation, NFC).
+7. **[SMART_GOALS.md](./SMART_GOALS.md)** — draft ideas: SMART goal lifecycle, review by the Eisenhower matrix, goal graveyard, execution contexts (voice, geolocation, NFC), energy and load, practices per SMART criterion and depth levels.
 8. **[CAR_AGENT.md](./CAR_AGENT.md)** — initial Hrimfaxi vehicle-agent behavioral specification and domain boundaries.
 9. **[HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)** — catalog of ten proposed user scenarios and potential MVP slices.
 10. **[HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)** — static review of all 10 cases, blockers, safety checks and Build vs Reuse decisions.
     - **[HOME_USER_CASES.md](./HOME_USER_CASES.md)** — scenario catalog of the home agent candidate **Frigg** (11 cases).
     - **[SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md)** — scenario catalog of the personal-administration agent **Fulla** (in Russian).
-    - **[FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md)** — all 33 scenarios run through the stage flow (GTD, SMART, Eisenhower): what passes, eight flow changes, proposed flow v2.
+    - **[FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md)** — all 33 scenarios run through the stage flow (GTD, SMART, Eisenhower) and the SMART practices: what passes, eight flow changes, proposed flow v2.
 11. **[brainstorm.md](./brainstorm.md)** — original ideas and their rationale; Brainstorm v1, frozen, preserved for historical context.
 12. **README.md** — this document: repository introduction and documentation map.
 
@@ -79,7 +79,7 @@ To avoid documents overlapping:
 - product behavior, scope, candidates, open decisions, traceability → **REQUIREMENTS.md**
 - stable cross-cutting rules → **PRINCIPLES.md**
 - shared terminology → **GLOSSARY.md**
-- draft ideas on SMART goal lifecycle, review and execution contexts → **SMART_GOALS.md**
+- draft ideas on SMART goal lifecycle, review, execution contexts, load and SMART practices → **SMART_GOALS.md**
 - how to apply code-quality practices, testing/CI expectations, standards-gap assessment → **ENGINEERING_STANDARDS.md**
 - development sequence and milestones → **PLAN.md**
 - exploratory ideas and historical reasoning → **brainstorm.md**

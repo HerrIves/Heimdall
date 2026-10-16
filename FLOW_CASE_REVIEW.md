@@ -2,7 +2,7 @@
 
 > **Status:** analysis, draft. Checked on 2026-10-16. No code exists; this is a paper check of the design, not a test result.
 > **Scope:** all 33 scenarios — Hrimfaxi UC-01…10 ([HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md)), Frigg UC-01…11 ([HOME_USER_CASES.md](./HOME_USER_CASES.md)), Fulla SEC-UC-01…12 ([SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md)).
-> **Checked against:** the stage flow with six stages and five rules (section 1), built from GTD, SMART and the Eisenhower matrix ([SMART_GOALS.md](./SMART_GOALS.md)).
+> **Checked against:** (1) the stage flow with six stages and five rules (sections 1–6), built from GTD, SMART and the Eisenhower matrix; (2) the SMART practices and depth levels of [SMART_GOALS.md](./SMART_GOALS.md) Part 4 (section 7).
 > **Related:** classification rule [PRINCIPLES.md](./PRINCIPLES.md) §8, terms [GLOSSARY.md](./GLOSSARY.md), requirements REQ-L07–L09 in [REQUIREMENTS.md](./REQUIREMENTS.md), Hrimfaxi safety audit [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md). Open follow-up tasks live in [TODO.md](./TODO.md); project status lives in [PROGRESS.md](./PROGRESS.md).
 
 ---
@@ -144,6 +144,7 @@ Only C2 is applied to the rule documents in this PR. C1 and C3–C8 are recorded
 ## 5. Still open
 
 - **❌ Frigg UC-10 and households in general.** The flow is single-user. It needs the decision "single user vs household" from [TODO.md](./TODO.md): who owns a task, whose quadrant, who approves. Candidate method: *Fair Play* (Eve Rodsky) — each task has one owner end to end.
+- **Long-term goals are untested.** No scenario is a level-3 goal ([SMART_GOALS.md](./SMART_GOALS.md) §13), so WOOP, lead / lag, key results and areas of focus have no evidence yet (section 7).
 - **Habits are untested.** No scenario in the catalogs covers habits (Duhigg habit loop, Clear's system of small changes), so R4 has no evidence yet. Two or three habit scenarios are needed.
 - **Eisenhower without the bottom row.** In [SMART_GOALS.md](./SMART_GOALS.md) §3 the "not important" quadrants are "to be defined", yet several cases (discounts, small seasonal items) need exactly them.
 - **Status mapping table** between Hrimfaxi incidents and SMART goals is not written yet (C6 and P0 in [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md)).
@@ -153,3 +154,79 @@ Only C2 is applied to the rule documents in this PR. C1 and C3–C8 are recorded
 - **Precedence (R2)** worked in the sharpest places: brakes (level 1), the "move to payday" button in SEC-UC-01 (level 2 against level 3), purchases and sending letters (level 1 — approval).
 - **Stage 5** fits the admin hour, the energy guard, the briefing and the contexts "home / on the way" without strain.
 - **R5 "the domain supplies facts"** separates the two state machines in UC-01. This is the direction for resolving the `active_tracking` P0 in [HRIMFAXI_CASE_REVIEW.md](./HRIMFAXI_CASE_REVIEW.md).
+
+---
+
+## 7. Second run — SMART practices and depth levels
+
+> Checked on 2026-10-16 against [SMART_GOALS.md](./SMART_GOALS.md) Part 4: practices per criterion (next action, definition of done, lead / lag, WOOP, responsible / accountable, areas of focus, hard vs soft deadline, backcasting) and depth levels 0–3 with a question budget.
+
+Legend: ✅ practices fit · ➖ not applicable (reference, query or list entry — no SMART passport) · ⚠️ led to a refinement of Part 4 · ❌ blocked.
+
+### Hrimfaxi — vehicle
+
+| ID | Level | What the practices produce | Result |
+|---|---|---|---|
+| UC-01 Brakes | 2 | Next action "book a diagnosis"; definition of done = invoice uploaded or repair confirmed (already in the scenario's closing step). The one question in the scenario fits the budget; safety reaction comes before it | ✅ |
+| UC-02 Check Engine | 2 | As UC-01; the immediate checklist is an answer, not a question | ✅ |
+| UC-03 Service invoice | 1 | Payment task: done = transfer confirmation. Mechanic's recommendation "rear pads 20%": no hard deadline → **review date** instead of an invented deadline | ✅ |
+| UC-04 Fuel receipt | — | Reference | ➖ |
+| UC-05 Insurance / TÜV | 1 | Renewal: hard deadline from the document, done = new policy or inspection report | ✅ |
+| UC-06 Scheduled service | 2 | Created by a recurring rule with a template: next action "book the garage", done = invoice uploaded. 0 questions | ✅ |
+| UC-07 Tire swap | 2 | Definition of done as a checklist: tires swapped, storage location recorded, tread depth noted | ✅ |
+| UC-08 Part research | 1 | Done = user picked an option or cart prepared; purchase stays behind approval | ✅ |
+| UC-09 Cost of ownership | — | Query. Note: it reads a **lag measure**; a future level-3 goal "lower car costs" would use it | ➖ |
+| UC-10 Service passport | — | Query + export | ➖ |
+
+### Frigg — home
+
+| ID | Level | What the practices produce | Result |
+|---|---|---|---|
+| UC-01 Discounts | 0 | List entry, light path | ➖ |
+| UC-02 Photo → list | 0 | List entry, light path | ➖ |
+| UC-03 Pantry low stock | 0 | List entry from a recurring rule | ➖ |
+| UC-04 Floating cleaning | 1 | Recurring rule, done = "bed linen changed". Each run is a **lead measure** of the area "home in order" | ✅ |
+| UC-05 Loose handle | 1 | Verb with a finish: "fix the cabinet handle". The scenario asks for the lamp / socket type — a **blocking prerequisite**, so level 1 cannot be "0 questions" strictly. Refinement: level 1 allows one question for a blocking gap | ⚠️ |
+| UC-06 Dog and sofa | 2 | Next action = the first-aid steps already given; done = "stain and smell removed", confirmed at the 24-hour check. One question (which branch) fits the budget; upholstery comes from the passport, not a question | ✅ |
+| UC-07 Appliance passport | — | Reference | ➖ |
+| UC-08 Appliance care | 1 | Recurring rule; the prerequisite (descaler in the pantry) is checked automatically, not asked | ✅ |
+| UC-09 Meter readings | 1 | Recurring rule, hard deadline, done = "readings submitted" | ✅ |
+| UC-10 Family coordination | 2 | **Responsible / accountable** gives the model: one person shops, one owns the list. Still blocked by the household decision (permissions, location privacy) | ❌ |
+| UC-11 Seasonal home care | 2 | Ideal case for a definition-of-done checklist; next action = first checklist item | ✅ |
+
+### Fulla — personal administration
+
+| ID | Level | What the practices produce | Result |
+|---|---|---|---|
+| SEC-UC-01 Pay an invoice | 1 | The SMART passport already has the completion artifact (= definition of done) and a perfective verb | ✅ |
+| SEC-UC-02 Send documents | 2 | Next action "print and sign"; exactly one question — the budget of level 2 | ✅ |
+| SEC-UC-03 Backward time-blocking | 2 | Backcasting milestones were listed only for level 3, but this level-2 goal needs them. Refinement: **attributes trigger practices** (hard deadline + several slots → milestones), the level only sets the question budget | ⚠️ |
+| SEC-UC-04 Micro-step | 2 | The five-minute micro-step **is** a smaller next action. "5 whys" fits here as an optional ladder step before the graveyard | ✅ |
+| SEC-UC-05 Admin hour | — | Stage 5 only | ➖ |
+| SEC-UC-06 Rescheduling | — | Stage 5 only | ➖ |
+| SEC-UC-07 Waiting-for | 1 | Done = "reply received" | ✅ |
+| SEC-UC-08 Kündigungsfrist | 2 | Next action "send the Kündigung"; done = Kündigungsbestätigung (already in the passport); hard deadline from the contract | ✅ |
+| SEC-UC-09 Briefing | — | Read-only | ➖ |
+| SEC-UC-10 Energy guard | — | Confirms that capacity planning belongs to stage 5, not to A | ✅ |
+| SEC-UC-11 Event preparation | 1 | Budget 30 € in M; backcasting from the event date | ✅ |
+| SEC-UC-12 Weekly review | — | This is the weekly sprint; "5 whys" fits the "stalled" block | ✅ |
+
+### Totals of the second run
+
+| Agent | ✅ | ➖ | ⚠️ | ❌ |
+|---|---|---|---|---|
+| Hrimfaxi (10) | 7 | 3 | 0 | 0 |
+| Frigg (11) | 5 | 4 | 1 | 1 |
+| Fulla (12) | 8 | 3 | 1 | 0 |
+| **All (33)** | **20** | **10** | **2** | **1** |
+
+### Findings
+
+1. **Level 0 is needed.** List entries (Frigg UC-01–03) do not carry a SMART passport; this matches the light path (C4).
+2. **Attributes trigger practices; the level sets the question budget** (SEC-UC-03).
+3. **Level 1 may ask one question for a blocking prerequisite** (Frigg UC-05).
+4. **Placement holds:** Eisenhower stays in stage 4, capacity in stage 5 (SEC-UC-10), "5 whys" only at review for stalled goals (SEC-UC-04, SEC-UC-12).
+5. **Definition of done already exists** in most scenarios as the closing condition or the completion artifact; the practice formalizes it rather than adding work.
+6. **No level-3 goal in any catalog.** WOOP, lead / lag, key results and areas of focus are untested, like the habits track. Long-term goal scenarios are needed (e.g. a savings goal, a renovation, learning a language).
+
+Refinements 1–3 are already written into [SMART_GOALS.md](./SMART_GOALS.md) §13.

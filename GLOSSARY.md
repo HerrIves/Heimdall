@@ -25,6 +25,9 @@ Avoid the bare word "project" in specifications. Older documents that say "proje
 | **Reference** | An item intentionally kept as information only: a record, a document, a fact, an idea without current action intent. |
 | **SMART goal** (RU: *SMART-цель*) | An actionable item with a clearly defined desired result, shaped by the SMART criteria — Specific, Measurable, Achievable, Relevant, Time-bound — where they help. Tracked until achieved, cancelled, or explicitly closed ([PRINCIPLES.md](./PRINCIPLES.md) §8). Usually contains tasks. |
 | **Task** | A concrete action step toward a SMART goal (or a standalone small action). May have a deadline, a trigger, and someone responsible for it. |
+| **Next action** (RU: *следующее физическое действие*) | The first visible physical step of a SMART goal (GTD). A SMART goal with several steps is not specific until it has one ([SMART_GOALS.md](./SMART_GOALS.md) §12). |
+| **Definition of done** (RU: *критерий готовности*) | The binary condition or checklist that closes a SMART goal or task; the same as the completion artifact of the SMART passport ([SMART_GOALS.md](./SMART_GOALS.md) §12). |
+| **Depth level** (RU: *уровень глубины*) | How many SMART practices and questions an item gets: 0 list entry, 1 SMART task, 2 SMART goal, 3 long-term goal ([SMART_GOALS.md](./SMART_GOALS.md) §13). |
 
 ## Classification rule
 

@@ -188,6 +188,57 @@ This closes the open gap **"attention budget"**. The 80% value is a starting poi
 
 ---
 
+## Part 4 — Practices per SMART criterion and depth levels
+
+Each SMART criterion is backed by an established practice, so the assistant asks the right guiding question and can check a goal deterministically instead of treating SMART as a dry checklist. The practices are placed on the stages of the shared flow (capture → clarify → formulate → prioritize → engage → review, see [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md)), so that each field still has exactly one writer.
+
+### 12. Practices per criterion
+
+| Criterion | Practice | Stage | What it adds to the SMART goal | Source |
+|---|---|---|---|---|
+| **S** Specific | **Next action** — a goal is not specific until its first visible physical step is defined | 3 Formulate | `next_action` | GTD (David Allen) |
+| **S** | Wording as a **verb with a clear finish** — "paint the nursery walls", not "work on the renovation" (RU: perfective infinitive, *покрасить*, which also satisfies the "infinitive" rule of the SMART passport in [SECRETARY_USER_CASES.md](./SECRETARY_USER_CASES.md) §2) | 3 Formulate | title | — |
+| **S** | **5W** (what, why, who, where, which) — only for the gaps that are actually missing | 3 Formulate | — | — |
+| **M** Measurable | **Definition of done** — a binary checklist when the result cannot be counted ("winter-ready car: tires swapped, washer fluid, battery checked"). Same as the *completion artifact* of the SMART passport | 3 Formulate | `definition_of_done` | Agile |
+| **M** | **Lead and lag measures** — the lag measure is the end result ("save 5,000 €"), the lead measure is the regular action that drives it ("put aside 150 € a week"). A lead measure is a recurring rule or a habit, so it links a goal to those tracks | 3 Formulate | `lag`, `lead` → recurring rule / habit | *The 4 Disciplines of Execution* (McChesney, Covey, Huling) |
+| **M** | **Key results** — "I will achieve X as measured by 2–3 key results"; only for long-term goals | 3 Formulate | key results | OKR (John Doerr, *Measure What Matters*) |
+| **A** Achievable / assignable | **WOOP** — wish, outcome, obstacle, plan in the form "if X happens, I will do Y" | 3 Formulate | `if_then_plans` | Gabriele Oettingen; implementation intentions (Peter Gollwitzer) |
+| **A** | **Responsible + accountable** — exactly one person does the task, exactly one accepts the result (RACI reduced to R and A for a household) | 3 Formulate | `responsible`, `accountable` | RACI |
+| **R** Relevant | **Areas of focus** — which life area (family, health, finance, home, car, work) or 1–3-year goal the goal serves. No area → offer *someday / maybe* | 2 Clarify | `area` | GTD horizons of focus |
+| **T** Time-bound | **Hard vs soft deadline** — only hard commitments get a deadline; the rest get a **review date** instead of an invented deadline | 3 Formulate (deadline), 6 Review (review date) | `deadline` optional, `next_review` | GTD |
+| **T** | **Backcasting** — milestones planned backwards from a fixed date | 5 Engage proposes, 3 Formulate writes | milestones | — |
+| **T** | **Weekly sprint** — the weekly review picks which goals get time this week | 6 Review | — | Scrum; *The 12 Week Year* (Brian Moran) |
+
+**Placement rules — what deliberately does not belong to a criterion:**
+
+- **Eisenhower and Pareto are not part of R.** Relevance only answers "which area does this serve?". The quadrant is written by stage 4 (Prioritize).
+- **Capacity planning is not part of A.** Overload is visible only when slots are planned, so the check lives in stage 5 (the 80% rule, §11). A proposal to reduce scope goes back to stage 3 (*return to formulation*).
+- **"5 whys" is not asked at creation.** It conflicts with "ask only for useful missing information" ([PRINCIPLES.md](./PRINCIPLES.md) §9). It is used only at review for a **stalled** goal, as an optional step of the postponement ladder before the goal graveyard.
+
+### 13. Depth levels and question budget
+
+Applying every practice to every goal turns the assistant into a questionnaire. The depth depends on the size of the item:
+
+| Level | Item | Practices applied | Questions to the user |
+|---|---|---|---|
+| **0** | List entry, context-only item (light path) | none | 0 |
+| **1** | SMART task — one step | verb with a finish, definition of done | 0, unless a **blocking prerequisite** is missing (then 1) |
+| **2** | SMART goal — several steps | + next action, responsible / accountable | at most 1 |
+| **3** | Long-term goal — weeks or longer | + WOOP, lead / lag, key results, area of focus, milestones | 2–3, spread over several reviews |
+
+Rules:
+
+1. **The level sets the question budget; attributes trigger practices.** A practice is applied whenever its trigger is present, whatever the level: a hard deadline plus several slots → backcasting milestones, even at level 2.
+2. **Defaults before questions.** Whatever can be derived (definition of done from a template, area from the domain agent, responsible person when there is a single user) is filled in by the assistant and shown for confirmation, not asked.
+3. **The area defaults to the domain agent** (Hrimfaxi → car, Frigg → home, Fulla → administration). It is asked only for level 3 or when the item crosses domains.
+4. **Safety first.** For a safety case no S/M/A question is asked before the safety reaction ([FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md), rule R2).
+
+### 14. Scenario check
+
+All 33 scenarios were run against this part: [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md) §7. Result: the practices fit 20 scenarios, 10 do not use SMART practices at all (references, queries, list entries), 2 led to the refinements above (rules 1 and the level-1 exception), 1 remains blocked (household). **No current scenario is a level-3 goal**, so WOOP, lead / lag, key results and areas of focus are not yet checked against any case.
+
+---
+
 ## Related scenarios
 
 These ideas already appear in the agent scenario catalogs:
@@ -207,6 +258,8 @@ All 33 scenarios were run through the stage flow built on this document (capture
 
 ## Open questions
 
+- Which life areas (areas of focus, §12) does Heimdall use, and are they the same as the domain agents?
+- Where are lead measures stored: as recurring rules, as habits, or as both?
 - Who owns lifecycle states — the Tasks module or the domain agent?
 - How strong should escalation be for long-postponed goals, and where does it stop being helpful?
 - Exact values: the threshold **N**, and the review frequencies per quadrant.
