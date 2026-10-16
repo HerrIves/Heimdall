@@ -15,7 +15,7 @@
 
 ## 🟡 Medium
 
-- [ ] **Merge PR #5 and protect `main`.** Merge the PROGRESS sync (PR #5) and configure the GitHub Ruleset for `main` with the required `security-gate` check; until then the PR security gate is not enforced ([SECURITY_REVIEW.md](./SECURITY_REVIEW.md)). *Owner action.*
+- [ ] **Validate and harden the active `PR_req` Ruleset.** Ruleset for `main` now requires PR and passing `security-gate`, but has `bypass=always` actors (repository role and integration). Review/limit bypass privileges as appropriate, confirm high-risk changes get independent review, and demonstrate that a deliberately unsafe PR cannot be merged. *Owner action; do not assume strict enforcement before this negative test.*
 - [ ] **Close the open design conflicts:**
   - [ ] Classification outcomes in REQ-L02: two outcomes — **reference** or **SMART** (RU: *справка / SMART*), not five outcomes and the word "project".
   - [ ] Two levels "incident and SMART goal": the shared SMART goal lifecycle on the platform level plus domain sub-statuses (e.g. Hrimfaxi incident statuses). Record in [CAR_AGENT.md](./CAR_AGENT.md) and [SMART_GOALS.md](./SMART_GOALS.md).
@@ -28,7 +28,7 @@
 - [ ] **German context:**
   - [ ] [HOME_USER_CASES.md](./HOME_USER_CASES.md): replace Russian realities (Пятёрочка, Самокат, Яндекс.Лавка, ЖКХ, управляющая компания) with German ones (Rewe, Lidl, Aldi, Flink, Knuspr, Stadtwerke, Hausverwaltung, Nebenkostenabrechnung).
   - [ ] Hrimfaxi UC-05: replace OSAGO/KASKO with German Kfz-Versicherung (Haftpflicht / Teilkasko / Vollkasko).
-- [ ] **SECURITY_REVIEW header is outdated:** it says "proposed policy … in PR branch `security/pr-gate-v1`", but the policy is already in `main`.
+- [ ] **SECURITY_REVIEW header is outdated:** it says "proposed policy … in PR branch `security/pr-gate-v1`", but the policy is already in `main`. Update the reference without changing enforcement expectations.
 - [ ] **Open product questions** (decide and record in REQUIREMENTS):
   - [ ] Single user vs household — who owns data, who approves spending, who gets reminders. More urgent now because Frigg UC-10 tracks family members' location.
   - [ ] DSGVO/GDPR and which data may be sent to external LLM providers (VIN, documents, addresses).
@@ -39,11 +39,13 @@
 
 - [ ] **Use-case prefixes:** `CAR-UC-NN` for Hrimfaxi and `HOME-UC-NN` for Frigg (today both use bare `UC-01…` and collide); Fulla already uses `SEC-UC-NN`.
 - [ ] **Status only in PROGRESS:** remove the duplicated phase / next-step statements from README, PLAN ("(current)"), REQUIREMENTS ("Next step") and ENGINEERING_STANDARDS §8 and link to [PROGRESS.md](./PROGRESS.md) instead.
-- [ ] **PROGRESS:** Frigg has 11 use cases in HOME_USER_CASES, but PROGRESS says 10. PROGRESS also still says `AGENTS.md` does not exist.
+- [ ] **PROGRESS:** Frigg has 11 use cases in HOME_USER_CASES, but an older summary says 10. Update the count and reconcile any remaining outdated summaries.
 - [ ] **SECRETARY_USER_CASES §6:** tick the items already closed by PR #3 (domain vs module split, Fulla name, time vs context, energy axis).
 
 ---
 
 ## Done
+
+- [x] PR #5 merged (status-sync documentation); PR #6 merged (`TODO.md`, `AGENTS.md`). GitHub Ruleset `PR_req` activated on 2026-10-15 and includes `security-gate`; bypass review and negative merge test remain separate open tasks.
 
 _Move or tick items here with the PR number when they are merged._
