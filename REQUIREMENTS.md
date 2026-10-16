@@ -71,7 +71,7 @@ Contracts of these modules remain **open** (Plan phase 4). Details: [GLOSSARY.md
 
 **REQ-L05 · Agreed.** Track each managed item until completion, explicit cancellation, or another intentional terminal state; allow updates, reassessment, reminders, and corrections.
 
-**REQ-L07 · Agreed.** Every input receives a deliberate classification — **reference** or **SMART goal**. An input left hanging as a passive, undecided note is not allowed. Purely informational data (VIN, document photo, note to remember) intentionally stays a reference. Applies to all domains. See PRINCIPLES §8 and [GLOSSARY.md](./GLOSSARY.md).
+**REQ-L07 · Agreed.** Every input receives a deliberate classification. An input with several parts is split, and each part is classified as **reference** or **SMART goal**; an immediate answer is allowed when the user needs help now (amended 2026-10-16 after [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md), change C2). An input or part left hanging as a passive, undecided note is not allowed. Purely informational data (VIN, document photo, note to remember) intentionally stays a reference. Applies to all domains. See PRINCIPLES §8 and [GLOSSARY.md](./GLOSSARY.md).
 
 **REQ-L08 · Candidate.** SMART goal lifecycle with deterministic regular review: states active ⇄ waiting → achieved / cancelled / someday-maybe / goal graveyard (archived, never deleted, revivable). Review frequency follows the Eisenhower quadrant and whether a deadline exists; the agent proposes the quadrant, the user confirms it. After N postponements Heimdall offers to move a goal to the graveyard. Details: [SMART_GOALS.md](./SMART_GOALS.md) Part 1.
 

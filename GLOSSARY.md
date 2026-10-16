@@ -25,17 +25,23 @@ Avoid the bare word "project" in specifications. Older documents that say "proje
 | **Reference** | An item intentionally kept as information only: a record, a document, a fact, an idea without current action intent. |
 | **SMART goal** (RU: *SMART-цель*) | An actionable item with a clearly defined desired result, shaped by the SMART criteria — Specific, Measurable, Achievable, Relevant, Time-bound — where they help. Tracked until achieved, cancelled, or explicitly closed ([PRINCIPLES.md](./PRINCIPLES.md) §8). Usually contains tasks. |
 | **Task** | A concrete action step toward a SMART goal (or a standalone small action). May have a deadline, a trigger, and someone responsible for it. |
+| **Next action** (RU: *следующее физическое действие*) | The first visible physical step of a SMART goal (GTD). A SMART goal with several steps is not specific until it has one ([SMART_GOALS.md](./SMART_GOALS.md) §12). |
+| **Definition of done** (RU: *критерий готовности*) | The binary condition or checklist that closes a SMART goal or task; the same as the completion artifact of the SMART passport ([SMART_GOALS.md](./SMART_GOALS.md) §12). |
+| **Depth level** (RU: *уровень глубины*) | How many SMART practices and questions an item gets: 0 list entry, 1 SMART task, 2 SMART goal, 3 long-term goal ([SMART_GOALS.md](./SMART_GOALS.md) §13). |
 
 ## Classification rule
 
-Every input must be deliberately classified as either a **reference** or a **SMART goal**. An input left hanging as a passive, undecided note is not allowed. This rule applies across all domains — vehicle (Hrimfaxi), home (Frigg), finance, and future agents.
+Every input must be deliberately classified. An input may contain several parts; each part is classified on its own as either a **reference** or a **SMART goal**, and Heimdall may also give an **immediate answer** when the user needs help right now. An input — or any part of it — left hanging as a passive, undecided note is not allowed. This rule applies across all domains — vehicle (Hrimfaxi), home (Frigg), finance, and future agents.
 
 Not every input becomes a SMART goal: purely informational data (a VIN, a photo of a document, a note to remember) stays a reference. What matters is that this is a conscious choice, not an accidental dead end. Full rule: [PRINCIPLES.md](./PRINCIPLES.md) §8.
 
 ```
-note ──▶ classification ──┬──▶ reference   (kept as information)
-                          └──▶ SMART goal  ──▶ tasks ──▶ achieved / cancelled / closed
+note ──▶ split into parts ──▶ each part ──┬──▶ reference   (kept as information)
+             │                            └──▶ SMART goal  ──▶ tasks ──▶ achieved / cancelled / closed
+             └──▶ immediate answer (optional, when help is needed now)
 ```
+
+Example: a service invoice → reference (maintenance record) + SMART task (pay) + SMART goal (mechanic's recommendation). Scenario check: [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md).
 
 Lifecycle states of SMART goals (active, waiting, achieved, cancelled, someday/maybe, goal graveyard) are drafted in [SMART_GOALS.md](./SMART_GOALS.md); requirements REQ-L07–L09 in [REQUIREMENTS.md](./REQUIREMENTS.md).
 

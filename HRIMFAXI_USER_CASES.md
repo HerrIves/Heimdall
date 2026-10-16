@@ -1,7 +1,7 @@
 # Hrimfaxi (Car Agent) — User Cases & Scenarios
 
 > **Status:** Working catalog of user scenarios for Heimdall's vehicle domain agent (**Hrimfaxi**).  
-> **Reference:** [CAR_AGENT.md](./CAR_AGENT.md), [REQUIREMENTS.md](./REQUIREMENTS.md), [PROGRESS.md](./PROGRESS.md).  
+> **Reference:** [CAR_AGENT.md](./CAR_AGENT.md), [REQUIREMENTS.md](./REQUIREMENTS.md), [PROGRESS.md](./PROGRESS.md). Stage-flow check of all cases: [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md).  
 > **Key Principle:** A note or observation never gets lost. Hrimfaxi turns it into a managed work item or reference record and drives it toward a clear, verified outcome under strict Human-in-the-Loop guardrails.
 
 ---

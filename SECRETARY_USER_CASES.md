@@ -1,7 +1,7 @@
 # Fulla — сценарии агента личной администрации
 
 > **Статус:** рабочий каталог сценариев, черновик. Не реализовано и не проверено тестами.
-> **Связанные документы:** [SMART_GOALS.md](./SMART_GOALS.md) (жизненный цикл, ревью, контексты), [GLOSSARY.md](./GLOSSARY.md) (термины), [PRINCIPLES.md](./PRINCIPLES.md) (§13, §15 — авторизация и подтверждения), [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), [HOME_USER_CASES.md](./HOME_USER_CASES.md).
+> **Связанные документы:** [SMART_GOALS.md](./SMART_GOALS.md) (жизненный цикл, ревью, контексты), [GLOSSARY.md](./GLOSSARY.md) (термины), [PRINCIPLES.md](./PRINCIPLES.md) (§13, §15 — авторизация и подтверждения), [HRIMFAXI_USER_CASES.md](./HRIMFAXI_USER_CASES.md), [HOME_USER_CASES.md](./HOME_USER_CASES.md). Прогон всех сценариев через схему этапов: [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md).
 > **Имя:** **Fulla** — в скандинавской мифологии служанка и доверенное лицо Фригг, хранительница её ларца. Подходит по смыслу (личные дела, доверенные документы) и соседствует с **Frigg** (дом).
 
 ---

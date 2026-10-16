@@ -67,7 +67,9 @@ Any incoming note, observation, problem, idea, or intention — in any domain (v
 - **Reference** — information intentionally kept as information, e.g. a VIN, a photo of a vehicle document, a note to remember;
 - **SMART goal** — an actionable item with a clearly defined desired result, tracked until it is achieved, cancelled, or explicitly closed.
 
-Leaving an input as a passive, unprocessed note without a decision is not allowed. At the same time, not every input must become a SMART goal: staying informational is a valid result, as long as it is an intentional choice rather than an accidental dead end.
+One input may contain several parts. Heimdall splits such an input and classifies **each part** on its own: a service invoice can yield a reference (the maintenance record), a SMART task (pay the invoice) and a future SMART goal (the mechanic's recommendation) at the same time. When the user needs help right now (a first-aid instruction, an urgent checklist), Heimdall may answer immediately; the immediate answer does not replace the classification of the remaining parts.
+
+Leaving an input — or any part of it — as a passive, unprocessed note without a decision is not allowed. At the same time, not every input must become a SMART goal: staying informational is a valid result, as long as it is an intentional choice rather than an accidental dead end. Scenario check of this rule: [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md) (change C2).
 
 For a SMART goal, Heimdall clarifies missing information, defines the desired result, derives tasks/actions, and tracks the work until completion, cancellation, or another explicit terminal state. Draft ideas for its lifecycle, review rhythm and execution contexts: [SMART_GOALS.md](./SMART_GOALS.md); terms: [GLOSSARY.md](./GLOSSARY.md).
 

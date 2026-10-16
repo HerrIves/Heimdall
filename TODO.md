@@ -30,10 +30,22 @@
   - [ ] Hrimfaxi UC-05: replace OSAGO/KASKO with German Kfz-Versicherung (Haftpflicht / Teilkasko / Vollkasko).
 - [ ] **SECURITY_REVIEW header is outdated:** it says "proposed policy … in PR branch `security/pr-gate-v1`", but the policy is already in `main`. Update the reference without changing enforcement expectations.
 - [ ] **Open product questions** (decide and record in REQUIREMENTS):
-  - [ ] Single user vs household — who owns data, who approves spending, who gets reminders. More urgent now because Frigg UC-10 tracks family members' location.
+  - [ ] Single user vs household — who owns data, who approves spending, who gets reminders. More urgent now because Frigg UC-10 tracks family members' location, and it is the only case that fails the stage flow ([FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md)).
   - [ ] DSGVO/GDPR and which data may be sent to external LLM providers (VIN, documents, addresses).
   - [ ] A reference dataset ("golden set") for evaluating the quality of LLM data extraction, so model changes are measurable.
   - [ ] Channel trust — which confirmations are allowed through which channel (app vs Telegram).
+
+- [ ] **Flow changes from [FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md)** (C2 is applied in PRINCIPLES §8, GLOSSARY and REQ-L07; the rest is open):
+  - [ ] C1 — fork **query vs input** at capture: read requests are answered from references and create no item.
+  - [ ] C3 — **Recurring rules** track (RU: *регламенты*): generator rules with templates create clarified SMART tasks; next due date counts from actual completion. Covers Hrimfaxi UC-06/07 and Frigg UC-03/04/08/09/11.
+  - [ ] C4 — **light path** for shopping-list entries and context-only tasks (no SMART passport, no Eisenhower quadrant).
+  - [ ] C5 — explicit **"return to formulation"** transition: Slot planner and Review propose step splits, duration changes and micro-steps; the Formulate stage writes them after user confirmation.
+  - [ ] C6 — **one owner for lifecycle status** (Tasks module, event-driven) and a mapping table from domain statuses to SMART goal states. Overlaps with "Two levels incident and SMART goal" above and the 🔴 `active_tracking` task.
+  - [ ] C7 — **one obligation, one object**: routing and deduplication when a contract or invoice touches two agents (Hrimfaxi UC-03/05, Frigg UC-09, Fulla SEC-UC-01/08).
+  - [ ] C8 — **provisional quadrant on arrival**, confirmed at review; for dangerous subsystems the safety rule sets it. Implement together with the 🔴 "Safety rule before the priority quadrant" task.
+- [ ] **Habit scenarios:** write 2–3 habit use cases (habit loop, small-change systems) so the habits track can be checked against the flow; today no catalog covers habits.
+- [ ] **Long-term goal scenarios (depth level 3):** write 2–3 cases (e.g. a savings goal, a renovation, learning a language) so WOOP, lead / lag measures, key results and areas of focus in [SMART_GOALS.md](./SMART_GOALS.md) Part 4 can be checked; no current scenario is level 3 ([FLOW_CASE_REVIEW.md](./FLOW_CASE_REVIEW.md) §7).
+- [ ] **Eisenhower bottom row:** define review rhythm for "not important" quadrants in [SMART_GOALS.md](./SMART_GOALS.md) §3.
 
 ## ⚪ Minor
 
